@@ -257,7 +257,6 @@
         }
 
         .cut-down-number-item span {
-            color: #000;
             font-size: 12px;
             font-weight: 400;
         }
@@ -1017,7 +1016,6 @@
         }
 
         .right-video video {
-            height: 100%;
             width: 100%;
         }
 
@@ -1211,6 +1209,8 @@
     <style>
         .cut-full-content.bg-img-bottom {
             height: 100vh;
+            font-family: Assistant;
+            font-style: normal;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1219,8 +1219,100 @@
             background-repeat: no-repeat;
             background-image: url("https://cdn.shopify.com/s/files/1/0493/9834/9974/files/Top_Banner_-_1920x970_a788bb2a-6b30-45bf-ae4f-330b7f778e68.png?v=1736237065");
         }
+
+        .cut-bottom-word-title {
+            color: #333;
+            font-size: 42px;
+            font-weight: 600;
+            line-height: 125%;
+            margin-bottom: 20px;
+        }
+
+        .cut-bottom-word-subtitle {
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 125%;
+            margin-bottom: 20px;
+        }
+
+        .cut-early-list-bottom {
+            color: #333;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 125%;
+        }
+
+        .cut-bottom-word-subtitle span,
+        .cut-bottom-word-title span,
+        .cut-early-list-bottom span {
+            color: #0773FF;
+        }
+
+        .cut-full-content.bg-img-bottom .cut-price-left p,
+        .cut-full-content.bg-img-bottom .cut-header-word-price .cut-price-right {
+            -webkit-text-fill-color: #333;
+        }
+
+        .cut-full-content.bg-img-bottom .cut-header-word-price .cut-price-right .line {
+            background: #333;
+        }
+
+        .cut-full-content.bg-img-bottom .cut-price-left span {
+            color: #0773FF;
+        }
+
+        .cut-full-content.bg-img-bottom .cut-down-number-item,
+        .cut-full-content.bg-img-bottom .cut-header-word-btn a {
+            background: #0773FF;
+            color: #FFF;
+        }
+
+        .cut-full-content.bg-img-bottom .cut-word-box-right {
+            color: #000;
+        }
+
+        .cut-full-content.bg-img-bottom .cut-header-word-btn-return {
+            color: #000;
+        }
+
+        .cut-full-content.bg-img-bottom .cut-header-word-btn-return span {
+            color: #0773FF;
+        }
     </style>
-    <div class="cut-full-content bg-img-bottom"></div>
+    <div class="cut-full-content bg-img-bottom">
+        <div class="cut-header-word">
+            <p class="cut-bottom-word-title"><span>90-Day</span> Risk-Free Guarantee</p>
+            <p class="cut-bottom-word-subtitle"><span>100% Satisfaction</span> · Or Your Money Back</p>
+            <ul class="cut-early-list-bottom">
+                <li><span>90-Day Trial </span> — Risk-Free Returns</li>
+                <li><span>Fast </span>& Friendly Customer Support</li>
+                <li><span>Fast </span>Shipping Guarantee</li>
+            </ul>
+            <div class="cut-header-word-price cut-mtp">
+                <div class="cut-price-left">
+                    <span><i>$</i>179</span>
+                    <p>&nbsp; Early Bird: </p>
+                </div>
+                <div class="cut-price-right">$358 MSRP <span class="line"></span> </div>
+                <div class="cut-header-word-box">
+                    <div class="cut-down-number-list">
+                        <div class="cut-down-number-item">
+                            <p>100</p>
+                            <span>piece</span>
+                        </div>
+                    </div>
+                    <p class="cut-word-box-right"> Early-Bird Spots</p>
+                </div>
+            </div>
+
+            <div class="cut-header-word-btn cut-mtp">
+                <a href="#"><span>$1</span> Refundable</a>
+                <p class="cut-header-word-btn-return"><span>Juy1 </span> Delivery.90-Day Return .1-Year Warranty</p>
+            </div>
+        </div>
+        <div class="cut-header-none"></div>
+    </div>
 
 
     <script>
