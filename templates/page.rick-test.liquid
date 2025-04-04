@@ -1,0 +1,1337 @@
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+    </style>
+    <style>
+        .cut-mtp {
+            margin-top: 24px;
+        }
+
+        .cut-header {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            /* background-color: #000; */
+            display: flex;
+            align-items: center;
+            font-family: Assistant;
+        }
+
+        .cut-video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            transition: opacity 1.5s ease-in-out;
+            opacity: 1;
+        }
+
+        .cut-video-background.fade-out {
+            opacity: 0;
+        }
+
+        .cut-header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 48px;
+            z-index: 2;
+            display: flex;
+            width: 100%;
+            gap: 70px;
+        }
+
+        .cut-header-none {
+            max-width: 490px;
+            flex: 1;
+        }
+
+        .cut-header-word {
+            max-width: 650px;
+        }
+
+
+        .cut-header-word-price .cut-price-left p,
+        .cut-header-word-price .cut-price-right,
+        .cut-title {
+            background: linear-gradient(103deg, #8BCEFF 0%, #FFD5BB 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: normal;
+            line-height: 125%;
+        }
+
+        .cut-header-word-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .cut-header-word-title {
+            color: #FBCB05;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 125%;
+        }
+
+        .cut-header-word-id {
+            font-size: 22px;
+            font-weight: 300;
+        }
+
+        .cut-header-word-del {
+            display: flex;
+            color: #FFF;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .cut-header-word-item {
+            max-width: calc(33.33% - 8px);
+        }
+
+        .cut-header-word-del .cut-svg {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            border: 1.471px solid #715B57;
+            background: linear-gradient(180deg, #080607 0%, #594C44 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cut-header-word-del-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 9px;
+        }
+
+        .cut-header-word-del-top p {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 125%;
+        }
+
+        .cut-header-word-del-btm {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 125%;
+        }
+
+        .cut-header-word-price {
+            display: flex;
+            gap: 20px;
+            align-items: end;
+        }
+
+        .cut-header-word-price .cut-price-left {
+            font-style: normal;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .cut-header-word-price .cut-price-left p {
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .cut-header-word-price .cut-price-left span {
+            color: #FC0;
+            font-size: 42px;
+            font-weight: 800;
+        }
+
+        .cut-header-word-price .cut-price-left i {
+            font-size: 20px;
+            line-height: 125%;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .cut-header-word-price .cut-price-right {
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .cut-header-word-price .cut-price-right .line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(103deg, #8BCEFF 0%, #FFD5BB 100%);
+            position: absolute;
+            left: 0;
+            bottom: 50%;
+        }
+
+        .cut-header-word-btn {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .cut-header-word-btn a {
+            text-decoration: none;
+            display: flex;
+            height: 45px;
+            min-width: 150px;
+            padding: 10px 32px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 4px;
+            background: #FC0;
+            color: #000;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-transform: capitalize;
+        }
+
+        .cut-header-word-btn a span {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .cut-header-word-btn-return {
+            color: #FFF;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 125%;
+        }
+
+        .cut-header-word-btn-return span {
+            color: #FC0;
+            font-size: 24px;
+        }
+
+        .cut-header-word-down {
+            display: flex;
+            gap: 12px;
+            color: #FFF;
+        }
+
+        .cut-down-number-list {
+            display: flex;
+            gap: 5px;
+            color: #000;
+        }
+
+        .cut-down-number-item {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: -1.405px;
+            border-radius: 2px;
+            background: #FC0;
+            text-align: center;
+            font-style: normal;
+            line-height: 130%;
+            padding: 2px 6px;
+        }
+
+        .cut-down-number-item p {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 100%;
+        }
+
+        .cut-down-number-item span {
+            color: #000;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .cut-header-word-box {
+            display: flex;
+            padding: 14px;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 204, 0, 0.15) 100%);
+        }
+
+        .cut-word-box-right {
+            color: #FFF;
+            text-align: center;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%;
+        }
+
+        @media screen and (max-width:1024px) {}
+
+        @media screen and (max-width:768px) {}
+    </style>
+    <div class="cut-header">
+        <!-- 添加第二个备用视频元素 -->
+        <video id="videoPlayer2" class="cut-video-background" playsinline muted autoplay preload="auto"
+            webkit-playsinline></video>
+        <video id="videoPlayer1" class="cut-video-background" playsinline muted autoplay preload="auto"
+            webkit-playsinline>
+            <source src="https://cdn.shopify.com/videos/c/o/v/1e565b9eff4c4784a55a301aec4fc14f.mp4" type="video/mp4">
+        </video>
+        <div class="cut-header-content">
+            <div class="cut-header-word">
+                <p class="cut-header-word-subtitle cut-title">Revolutionary Knife Sharpening Experience:</p>
+                <p class="cut-header-word-title">Razor-Sharp in Just 2 Minutes! </p>
+                <span class="cut-header-word-id cut-title">Precision Kitchen Knife Sharpener (Patent No. US
+                    D1067745S)</span>
+                <div class="cut-header-word-del cut-mtp">
+                    <div class="cut-header-word-item">
+                        <div class="cut-header-word-del-top">
+                            <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Precision_Kitchen_Knife_Sharpener1.png?v=1743313194"
+                                class="cut-svg" alt="330mm">
+                            <p>330mm</p>
+                        </div>
+                        <div class="cut-header-word-del-btm">Max Blade Compatibility with Full Metal Frame</div>
+                    </div>
+                    <div class="cut-header-word-item">
+                        <div class="cut-header-word-del-top">
+                            <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Precision_Kitchen_Knife_Sharpener2.png?v=1743313194"
+                                class="cut-svg" alt="330mm">
+                            <p>330mm</p>
+                        </div>
+                        <div class="cut-header-word-del-btm">Max Blade Compatibility with Full Metal Frame</div>
+                    </div>
+                    <div class="cut-header-word-item">
+                        <div class="cut-header-word-del-top">
+                            <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Precision_Kitchen_Knife_Sharpener1.png?v=1743313194"
+                                class="cut-svg" alt="330mm">
+                            <p>330mm</p>
+                        </div>
+                        <div class="cut-header-word-del-btm">Max Blade Compatibility with Full Metal Frame</div>
+                    </div>
+                    <div class="cut-header-word-item">
+                        <div class="cut-header-word-del-top">
+                            <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Precision_Kitchen_Knife_Sharpener1.png?v=1743313194"
+                                class="cut-svg" alt="330mm">
+                            <p>330mm</p>
+                        </div>
+                        <div class="cut-header-word-del-btm">Max Blade Compatibility with Full Metal Frame</div>
+                    </div>
+                    <div class="cut-header-word-item">
+                        <div class="cut-header-word-del-top">
+                            <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Precision_Kitchen_Knife_Sharpener1.png?v=1743313194"
+                                class="cut-svg" alt="330mm">
+                            <p>330mm</p>
+                        </div>
+                        <div class="cut-header-word-del-btm">Max Blade Compatibility with Full Metal Frame</div>
+                    </div>
+                </div>
+                <div class="cut-header-word-price cut-mtp">
+                    <div class="cut-price-left">
+                        <span><i>$</i>179</span>
+                        <p>&nbsp; Early Bird: </p>
+
+                    </div>
+                    <div class="cut-price-right">$358 MSRP <span class="line"></span> </div>
+                    <div class="cut-header-word-box">
+                        <div class="cut-down-number-list">
+                            <div class="cut-down-number-item">
+                                <p>100</p>
+                                <span>piece</span>
+                            </div>
+                        </div>
+                        <p class="cut-word-box-right"> Early-Bird Spots</p>
+                    </div>
+                </div>
+                <div class="cut-header-word-btn cut-mtp">
+                    <a href="#"><span>$1</span> Refundable</a>
+                    <div class="cut-header-word-down">
+                        <div class="cut-header-word-box">
+                            <div class="cut-down-number-list">
+                                <div class="cut-down-number-item">
+                                    <p id="days">00</p>
+                                    <span>Days</span>
+                                </div>
+                                <div class="cut-down-number-item">
+                                    <p id="hours">00</p>
+                                    <span>Hours</span>
+                                </div>
+                                <div class="cut-down-number-item">
+                                    <p id="minutes">00</p>
+                                    <span>Mins</span>
+                                </div>
+                                <div class="cut-down-number-item">
+                                    <p id="seconds">00</p>
+                                    <span>Secs</span>
+                                </div>
+                            </div>
+                            <p class="cut-word-box-right">Countdown</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="cut-header-word-btn-return"><span>Juy1 </span> Delivery.90-Day Return .1-Year Warranty</p>
+            </div>
+            <div class="cut-header-none"></div>
+        </div>
+    </div>
+    <style>
+        .cut-content {
+            max-width: 1280px;
+            margin: 50px auto;
+            padding: 0 48px;
+            font-family: Assistant;
+        }
+
+        .cut-content .full-video {
+            width: 100%;
+            height: auto;
+            margin-bottom: 32px;
+        }
+
+        .cut-sharpening {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+        }
+
+        .cut-sharpening-title {
+            color: #000;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            text-transform: uppercase;
+        }
+
+        .cut-sharpening-line {
+            width: 1px;
+            height: 74px;
+            background-color: #EEEEEE;
+        }
+
+        .cut-sharpening-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .cut-sharpening-right p {
+            color: #000;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 150%;
+            text-transform: capitalize;
+        }
+
+        .cut-sharpening-right span {
+            color: #000;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 150%;
+            text-transform: capitalize;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .cut-sharpening-right img {
+            max-width: 110px;
+        }
+    </style>
+
+    <div class="cut-content">
+        <video class="full-video">
+            <source src="https://cdn.shopify.com/videos/c/o/v/57de17c88a30406396b38ca3a20e68dc.webm" type="video/mp4">
+        </video>
+        <div class="cut-sharpening">
+            <p class="cut-sharpening-title">Sharpening Master? That’s You.</p>
+            <div class="cut-sharpening-line"></div>
+            <div class="cut-sharpening-right">
+                <p>Real Users. Real Results.</p>
+                <span>In early testing, real users put our sharpener to the test — and the feedback says it all. From
+                    chipped knives to dull scissors, they were amazed by the speed, sharpness, and precision.“Took my
+                    dull cleaver to razor-sharp in under 3 minutes.” “Fixed a chipped blade like new. Even sharpened my
+                    scissors.” “The angle control is just... chef’s kiss. So smooth.” “Sharpened my super steel knife
+                    without a scratch.”Watch the clips — no actors, no scripts. Just honest results.</span>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Real_Users._Real_Results.-min.png?v=1743737981"
+                    alt="Real Users. Real Results.">
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .cut-full-content {
+            width: 100%;
+            padding: 96px 0;
+            background: #141414;
+        }
+
+        .cut-full-content.black {
+            background: #000;
+            padding: 55px 0;
+        }
+
+        .cut-disruptive-title {
+            font-size: 48px;
+            font-weight: 600;
+            max-width: 567px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cut-disruptive-title span {
+            color: #FC0;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 100%;
+            background-color: transparent;
+            -webkit-text-fill-color: #FC0;
+        }
+
+        .cut-disruptive-subtitle {
+            color: #FFF;
+            text-align: center;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 216.667%;
+        }
+
+        .cut-disruptive-subtitle span {
+            color: #FC0;
+            position: relative;
+        }
+
+        .cut-disruptive-subtitle img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: translateY(40%);
+        }
+
+        .cut-left-right-layout {
+            display: flex;
+            margin-top: 96px;
+            padding: 48px 0;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .cut-left-right-layout.between {
+            justify-content: space-between;
+        }
+
+        .cut-word-layout .title {
+            color: #FFF;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 125%;
+            text-transform: capitalize;
+            max-width: 300px;
+            margin-bottom: 32px;
+        }
+
+        .cut-word-layout .title span {
+            color: #FC0;
+        }
+
+        .cut-word-list li {
+            position: relative;
+            color: #FC0;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 125%;
+            display: flex;
+            margin-bottom: 12px;
+        }
+
+        .cut-word-list li::before {
+            content: "•";
+            color: #FC0;
+            font-size: 1.4em;
+            line-height: 80%;
+            margin-right: 4px;
+            height: 100%;
+            display: block;
+        }
+
+        .cut-word-list p {
+            color: #FFF;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 125%;
+            margin-top: 4px;
+        }
+
+        .cut-video-layout {
+            max-width: 600px;
+            height: auto;
+        }
+
+        .cut-fast-title {
+            text-align: center;
+            color: #FFF;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 28px;
+            letter-spacing: -0.4px;
+            text-transform: capitalize;
+        }
+
+        .cut-fast-title span {
+            color: #FC0;
+        }
+
+        .cut-fast-img {
+            margin: 96px auto 0;
+            max-width: 1280px;
+            display: block;
+        }
+    </style>
+    <div class="cut-full-content">
+        <div class="cut-content">
+            <p class="cut-disruptive-title cut-title"> <span>6 Disruptive</span> Innovations
+                for Faster Sharpening</p>
+            <p class="cut-disruptive-subtitle"> Patent:<span>US D1067745S<img
+                        src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/US_D1067745S-min.png?v=1743745136"
+                        alt="US D1067745S"> </span>.（Verified ）</p>
+
+            <div class="cut-left-right-layout between">
+                <div class="cut-word-layout">
+                    <p class="title"><span>3-Stage</span> Sharpening for All Edge Needs</p>
+                    <ul class="cut-word-list">
+                        <li>
+                            <div>
+                                <span>500 Grit</span>
+                                <p>Stage 1 — Chip Repair & Meat Prep</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div><span>1000 Grit</span>
+                                <p>Stage 2 — Micro-Toothing for Veggies</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>Leather Strop</span>
+                                <p>Stage 3 — Burr Removal & Razor Edge</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <video class="cut-video-layout">
+                    <source src="https://cdn.shopify.com/videos/c/o/v/f9d48764f39e48f1af37264252f143d4.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <div class="cut-left-right-layout">
+                <video class="cut-video-layout">
+                    <source src="https://cdn.shopify.com/videos/c/o/v/1ce53bc0b3f149b9a50af28de997297b.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="cut-word-layout">
+                    <p class="title"><span> Sintered Diamond</span> 100x More Durable ThanElectroplated</p>
+                    <ul class="cut-word-list">
+                        <li>
+                            <div>
+                                <span>1000+ Uses</span>
+                                <p>Dual 4mm Plates</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div><span>3-Stroke </span>
+                                <p>Burr</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>Super Steels</span>
+                                <p>Easily Sharpened</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="cut-left-right-layout between">
+                <div class="cut-word-layout">
+                    <p class="title"><span>Pro Clamp </span> Locks In for Precision</p>
+                    <ul class="cut-word-list">
+                        <li>
+                            <div>
+                                <span>Symmetric clamping</span>
+                                <p>Even Bevels on Both Sides </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div><span>1s Flip</span>
+                                <p>No Blade Removal Needed</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>22 lbs Magnetic Force</span>
+                                <p>Rock-Solid Clamping Stability</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>330mm Compatible</span>
+                                <p>Supports All Kitchen Knives & Shears</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <video class="cut-video-layout">
+                    <source src="https://cdn.shopify.com/videos/c/o/v/afd96b703b33487ab8f1375d66cd4e6d.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="cut-full-content black">
+        <p class="cut-fast-title"><span>3s</span> Angle Adjustment — Fast & Precise</p>
+        <img class="cut-fast-img"
+            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/3s_Angle_Adjustment_Fast_Precise.png?v=1743747429"
+            alt="3s Angle Adjustment — Fast & Precise">
+    </div>
+    <div class="cut-full-content">
+        <div class="cut-content">
+            <div class="cut-left-right-layout">
+                <video class="cut-video-layout">
+                    <source src="https://cdn.shopify.com/videos/c/o/v/cd6980304a764111a2553d2768aa79df.mp4"
+                        type="video/mp4">
+                </video>
+                <div class="cut-word-layout">
+                    <p class="title"><span> Smooth like</span><br>
+                        a german gearbox</p>
+                    <ul class="cut-word-list">
+                        <li>
+                            <div>
+                                <span>4-Axis Dual Rails</span>
+                                <p>Silent, Smooth Motion</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div><span>2 Lock Rods</span>
+                                <p>Zero Wobble & Rock-Solid Grip</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>385-575mm Extendable Arm</span>
+                                <p>Fits Most Sink Sizes</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>4 Locking Screws</span>
+                                <p>Anti-Slip, Table-Stable Setup</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="cut-left-right-layout between">
+                <div class="cut-word-layout">
+                    <p class="title"><span>Premium Build</span>
+                        Durable.Worry-Free</p>
+                    <ul class="cut-word-list">
+                        <li>
+                            <div>
+                                <span>Quick Rinse</span>
+                                <p>Anodized for Easy Cleanup</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div><span>6061 + 304 Stainless Steel</span>
+                                <p>Rustproof, Long-Lasting Build</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <video class="cut-video-layout">
+                    <source src="https://cdn.shopify.com/videos/c/o/v/e4df1d54e8804b348b06adca5499cff6.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <style>
+        .cut-content.white {
+            margin: 96px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cut-in-the-box {
+            max-width: 490px;
+            color: rgba(0, 0, 0, 0.85);
+            font-style: normal;
+            line-height: 125%;
+        }
+
+        .cut-in-the-box img {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .cut-in-the-box p {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.96px;
+            margin-bottom: 40px;
+        }
+
+        .cut-in-the-box span {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .cut-img-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 592px;
+        }
+
+
+
+        .cut-img-item {
+            max-width: calc(33.3333% - 6px);
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.04);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cut-img-item img {
+            width: 100%;
+        }
+
+        .cut-img-item p {
+            color: rgba(0, 0, 0, 0.85);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: -0.28px;
+            max-width: 136px;
+        }
+    </style>
+    <div class="cut-content white">
+        <div class="cut-in-the-box">
+            <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box.jpg" alt="In the Box">
+            <p>In the Box</p>
+            <span>From quick touch-ups to fully customized grinds, experience elite-level performance and
+                freedom. <br>
+                Co-developed with knife-making legend Ken Onion, this sharpener lets you hone your blades
+                like a true
+                professional.</span>
+        </div>
+        <div class="cut-img-list">
+            <div class="cut-img-item">
+                <p>Dual-Sided Diamond Sharpening Stone</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box1.png"
+                    alt="Dual-Sided Diamond Sharpening Stone">
+            </div>
+            <div class="cut-img-item">
+                <p>Scissor Clamp</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box2.png" alt="Scissor Clamp">
+            </div>
+            <div class="cut-img-item">
+                <p>Leather Strop</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box3.png" alt="Leather Strop">
+            </div>
+            <div class="cut-img-item">
+                <p>Knife Sharpener</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box4.png" alt="Knife Sharpener">
+            </div>
+            <div class="cut-img-item">
+                <p>Digital Angle Gauge</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box5.png"
+                    alt="Digital Angle Gauge">
+            </div>
+            <div class="cut-img-item">
+                <p>Water Spray Bottle</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box6.png"
+                    alt="Water Spray Bottle">
+            </div>
+            <div class="cut-img-item">
+                <p>Wooden Stone Storage Box</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box7.png"
+                    alt="Wooden Stone Storage Box">
+            </div>
+            <div class="cut-img-item">
+                <p>Maintenance Kit</p>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/In_the_Box8.png" alt="Maintenance Kit">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <style>
+        .cut-full-content.bg-img {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-image: url("https://stag-www-cdn.djiits.com/pre/dps/bad1e5a4d479357204ae68f6cca736a3.png");
+        }
+
+        .cut-full-content.bg-img .cut-header-word {
+            max-width: 700px;
+        }
+
+        .cut-early-list {
+            color: #FFF;
+            font-family: Assistant;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 125%;
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .cut-early-list span {
+            font-weight: 700;
+            color: #FC0;
+        }
+    </style>
+
+    <div class="cut-full-content bg-img">
+        <div class="cut-header-word">
+            <p class="cut-header-word-title">Save 50% — Early Bird Offer</p>
+            <ul class="cut-early-list">
+                <li><span>100</span> Early Bird Spots</li>
+                <li><span>50</span> First Backers — Free Diamond Spray ($20 Value)</li>
+                <li><span>90</span>-Day Trial — Free Returns</li>
+            </ul>
+            <div class="cut-header-word-price cut-mtp">
+                <div class="cut-price-left">
+                    <span><i>$</i>179</span>
+                    <p>&nbsp; Early Bird: </p>
+                </div>
+                <div class="cut-price-right">$358 MSRP <span class="line"></span> </div>
+                <div class="cut-header-word-box">
+                    <div class="cut-down-number-list">
+                        <div class="cut-down-number-item">
+                            <p>100</p>
+                            <span>piece</span>
+                        </div>
+                    </div>
+                    <p class="cut-word-box-right"> Early-Bird Spots</p>
+                </div>
+            </div>
+
+            <div class="cut-header-word-btn cut-mtp">
+                <a href="#"><span>$1</span> Refundable</a>
+                <p class="cut-header-word-btn-return"><span>Juy1 </span> Delivery.90-Day Return .1-Year Warranty</p>
+            </div>
+        </div>
+        <div class="cut-header-none"></div>
+    </div>
+
+
+
+
+
+
+
+    <style>
+        .cut-why-choose {
+            text-align: center;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 52px;
+            margin-bottom: 24px;
+        }
+
+        .cut-why-choose-subtitle {
+            text-align: center;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 52px;
+            margin-bottom: 32px;
+        }
+
+        .cut-why-choose-subtitle span {
+            -webkit-text-fill-color: #FC0
+        }
+
+        .cut-why-choose-layout {
+            display: flex;
+            margin-bottom: 96px;
+        }
+
+        .left-img,
+        .right-video {
+            flex: 1;
+            position: relative;
+        }
+
+        .left-img img {
+            width: 100%;
+        }
+
+        .right-video video {
+            height: 100%;
+            width: 100%;
+        }
+
+        .cut-how-to-change {
+            position: absolute;
+            top: 330px;
+            left: 0;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            color: #FFF;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 125%;
+            /* 25px */
+        }
+
+        .cut-how-to-change.right {
+            left: auto;
+            right: 0;
+            text-align: right;
+        }
+
+        .cut-how-to-change .icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .cut-how-to-change.right .icon {
+            margin-left: auto;
+        }
+
+        .cut-how-to-change.right span {
+            font-size: 24px;
+            color: #fff;
+            max-width: 400px;
+        }
+
+        .cut-how-to-change.right p {
+            color: #FC0;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 125%;
+        }
+    </style>
+
+    <div class="cut-full-content black">
+        <div class="cut-content">
+            <p class="cut-title cut-why-choose">Why Choose Our Sharpener?</p>
+            <p class="cut-title cut-why-choose-subtitle"> <span>5 Problems</span>, One Solution — We Fixed Them All</p>
+            <div class="cut-why-choose-layout">
+                <div class="left-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener1-min.jpg?v=1743749733"
+                        alt="1.Still Dull After Sharpening?">
+                    <div class="cut-how-to-change left">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/no-min.png?v=1743749733"
+                            alt="no">
+                        <span>1.Still Dull After Sharpening?</span>
+                    </div>
+                </div>
+                <div class="right-video">
+                    <video
+                        poster="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener1-right.jpg?v=1743750946">
+                        <source src="https://cdn.shopify.com/videos/c/o/v/1d4e3f0c8bd94f3497a2b3654233bfad.mp4">
+                    </video>
+                    <div class="cut-how-to-change right">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/yes-min.png?v=1743749733"
+                            alt="yes">
+                        <p> 3-Stage Systems</p>
+                        <span> Chips, Burrs, Hair & Paper?
+                            No Problem.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cut-why-choose-layout">
+                <div class="left-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener2-min.jpg?v=1743749733"
+                        alt="2. Chipped Edge? Can’t Fix It?">
+                    <div class="cut-how-to-change left">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/no-min.png?v=1743749733"
+                            alt="no">
+                        <span>2. Chipped Edge? Can’t Fix It?</span>
+                    </div>
+                </div>
+                <div class="right-video">
+                    <video
+                        poster="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener2-right.jpg?v=1743750946">
+                        <source src="https://cdn.shopify.com/videos/c/o/v/2a5f1e492627483cbd69243ed9daa5f7.mp4">
+                    </video>
+                    <div class="cut-how-to-change right">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/yes-min.png?v=1743749733"
+                            alt="yes">
+                        <p>5 Minutes
+                        </p>
+                        <span>Fix Chips with
+                            #500 Diamond</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cut-why-choose-layout">
+                <div class="left-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener3-min.jpg?v=1743749733"
+                        alt="3. 5 Uses Later… and It’s Useless.">
+                    <div class="cut-how-to-change left">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/no-min.png?v=1743749733"
+                            alt="no">
+                        <span>3. 5 Uses Later… and It’s Useless.</span>
+                    </div>
+                </div>
+                <div class="right-video">
+                    <video
+                        poster="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener3-right.jpg?v=1743750946">
+                        <source src="https://cdn.shopify.com/videos/c/o/v/2de25f77abae4cd5be844f7d58a8d282.mp4">
+                    </video>
+                    <div class="cut-how-to-change right">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/yes-min.png?v=1743749733"
+                            alt="yes">
+                        <p> 100x Durable</p>
+                        <span>4mm Diamond
+                            1,000 Knives</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cut-why-choose-layout">
+                <div class="left-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener4-min.jpg?v=1743749733"
+                        alt="4. Jagged Edge? Surface Scratched?">
+                    <div class="cut-how-to-change left">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/no-min.png?v=1743749733"
+                            alt="no">
+                        <span>4. Jagged Edge? Surface Scratched?</span>
+                    </div>
+                </div>
+                <div class="right-video">
+                    <video
+                        poster="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener4-right.jpg?v=1743750946">
+                        <source src="https://cdn.shopify.com/videos/c/o/v/9db161cf142f47d69b6db3a3e4f3fd38.mp4">
+                    </video>
+                    <div class="cut-how-to-change right">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/yes-min.png?v=1743749733"
+                            alt="yes">
+                        <p>Perfect Edge Line </p>
+                        <span> Symmetrical Clamp
+                            with Rubber Protection</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cut-why-choose-layout">
+                <div class="left-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener5-min.jpg?v=1743749733"
+                        alt="5. 2–3 Years In… Still Can’t Sharpen Right?">
+                    <div class="cut-how-to-change left">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/no-min.png?v=1743749733"
+                            alt="no">
+                        <span>5. 2–3 Years In… Still Can’t Sharpen Right?</span>
+                    </div>
+                </div>
+                <div class="right-video">
+                    <video
+                        poster="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Why_Choose_Our_Sharpener5-right.jpg?v=1743750946">
+                        <source src="https://cdn.shopify.com/videos/c/o/v/171664acc436439b9acac5c05ecb2365.mp4">
+                    </video>
+                    <div class="cut-how-to-change right">
+                        <img class="icon"
+                            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/yes-min.png?v=1743749733"
+                            alt="yes">
+                        <p> 3-Second <span>Angle Set</span>
+                        </p>
+                        <span> 15 Stops <br>
+                            Digital Display</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .cut-full-content.bg-img-bottom {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-image: url("https://cdn.shopify.com/s/files/1/0493/9834/9974/files/Top_Banner_-_1920x970_a788bb2a-6b30-45bf-ae4f-330b7f778e68.png?v=1736237065");
+        }
+    </style>
+    <div class="cut-full-content bg-img-bottom"></div>
+
+
+    <script>
+        $(document).ready(function () {
+            // 设置截止日期：2025年4月5日12:00:00
+            const endDate = new Date(2025, 3, 5, 12, 0, 0); // 注意月份是0-11，所以4月是3
+
+            // 更新倒计时函数
+            function updateCountdown() {
+                const now = new Date();
+                const distance = endDate - now;
+
+                // 计算时间差
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // 更新显示
+                $("#days").text(days.toString().padStart(2, '0'));
+                $("#hours").text(hours.toString().padStart(2, '0'));
+                $("#minutes").text(minutes.toString().padStart(2, '0'));
+                $("#seconds").text(seconds.toString().padStart(2, '0'));
+
+                // 倒计时结束处理
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    // $(".cut-down-number-list").html("<div style='color:red;font-size:2rem;'>倒计时已结束！</div>");
+                }
+            }
+
+            // 立即执行一次
+            updateCountdown();
+
+            // 设置定时器，每秒更新
+            const countdownTimer = setInterval(updateCountdown, 1000);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            const videoList = ["https://cdn.shopify.com/videos/c/o/v/1e565b9eff4c4784a55a301aec4fc14f.mp4",
+                "https://cdn.shopify.com/videos/c/o/v/8d85ec3d2fe646b78defbd70ae93233b.mp4",
+                "https://cdn.shopify.com/videos/c/o/v/a0fb626826e340d9825174358b24ff35.mp4",
+                "https://cdn.shopify.com/videos/c/o/v/1f50d1b1f51c4a14a4cce494ad01722a.mp4"];
+            let currentVideoIndex = 0;
+            let isSwitching = false;
+
+            const $videos = [$('#videoPlayer1'), $('#videoPlayer2')];
+            let activeIndex = 0;
+
+            $videos[1].hide().removeClass('fade-out');
+
+            function getNextVideoIndex() {
+                return (currentVideoIndex + 1) % videoList.length;
+            }
+
+            async function switchVideo() {
+                if (isSwitching) return;
+                isSwitching = true;
+
+                const nextVideoIndex = getNextVideoIndex();
+                const $currentVideo = $videos[activeIndex];
+                const $nextVideo = $videos[1 - activeIndex];
+
+
+                $nextVideo[0].src = videoList[nextVideoIndex];
+
+                try {
+                    await new Promise((resolve, reject) => {
+                        $nextVideo[0].onloadedmetadata = resolve;
+                        $nextVideo[0].onerror = reject;
+                        $nextVideo[0].load();
+                    });
+
+                    await new Promise(resolve => {
+                        if ($nextVideo[0].readyState > 3) resolve();
+                        else $nextVideo[0].oncanplaythrough = resolve;
+                    });
+
+                    $currentVideo.addClass('fade-out');
+
+                    $nextVideo.show()
+                        .removeClass('fade-out')
+                    [0].play()
+                        .catch(error => console.error(error));
+
+                    currentVideoIndex = nextVideoIndex;
+                    activeIndex = 1 - activeIndex;
+
+                    updateEventListeners();
+
+                } catch (error) {
+                    console.error(error);
+                } finally {
+                    setTimeout(() => {
+                        $currentVideo[0].pause();
+                        $currentVideo.hide().removeClass('fade-out');
+                        isSwitching = false;
+                    }, 1500);
+                }
+            }
+
+            function updateEventListeners() {
+                $videos.forEach(($video, index) => {
+                    $video.off('ended');
+                    if (index === activeIndex) {
+                        $video.on('ended', switchVideo);
+                    }
+                });
+            }
+
+            updateEventListeners();
+        });
+    </script>
