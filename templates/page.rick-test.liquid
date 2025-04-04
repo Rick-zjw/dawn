@@ -613,15 +613,4 @@
         <div class="cut-header-none">&nbsp;<span></span></div>
     </div>
 
-    <script>
-        document.addEventListener('contextmenu', event => event.preventDefault()); // 禁用右键菜单
-
-        document.addEventListener('keydown', event => {
-            if (event.key === 'F12' ||
-                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J')) ||
-                (event.ctrlKey && (event.key === 'U' || event.key === 'S'))) {
-                event.preventDefault();
-            }
-        });
-    </script>
     <script src="https://cdn.shopify.com/s/files/1/0802/8746/5755/files/index.min.js?v=1743778394"></script>
