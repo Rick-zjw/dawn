@@ -29,7 +29,7 @@
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "点击此处预览页面",
+            "button_label_1": "预览页面",
             "button_link_1": "shopify://pages/cut-test",
             "button_style_secondary_1": true,
             "button_label_2": "",
