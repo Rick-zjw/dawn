@@ -19,20 +19,13 @@
             "heading_size": "h0"
           }
         },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "text_style": "body"
-          }
-        },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "预览页面",
+            "button_label_1": "预览页面（分段视频）",
             "button_link_1": "shopify://pages/cut-test",
             "button_style_secondary_1": true,
-            "button_label_2": "",
+            "button_label_2": "预览页面（单一视频）",
             "button_link_2": "",
             "button_style_secondary_2": true
           }
@@ -40,7 +33,6 @@
       },
       "block_order": [
         "heading",
-        "text",
         "button"
       ],
       "settings": {
