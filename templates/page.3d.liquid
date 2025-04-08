@@ -1,0 +1,16 @@
+   <script src="{{ 'model-viewer.js' | asset_url }}"></script>
+
+   <style>
+        .page-width {
+            background-color: #000;
+            height: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <div class="page-width">
+        <model-viewer src="./cut1.glb" alt="A 3D model of a product" ar auto-rotate camera-controls shadow-intensity="1"
+            style="width: 500px;height: 500px;">
+        </model-viewer>
+    </div>
