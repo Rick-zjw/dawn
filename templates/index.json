@@ -171,7 +171,7 @@
         "image_width": "third",
         "image_ratio": "adapt",
         "button_label": "3D 预览效果",
-        "button_link": "",
+        "button_link": "shopify://pages/3d-test",
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "none",
