@@ -165,6 +165,7 @@
     },
     "multicolumn": {
       "type": "multicolumn",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
