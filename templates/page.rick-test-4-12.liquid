@@ -1,6 +1,7 @@
 
     <link rel="stylesheet" href="{{ 'cut.css' | asset_url }}" media="print" onload="this.media='all'">
-
+    {% assign product_count = all_products['green-snowboard'] %}
+    {% assign first_variant = product_count.variants.first %}
     <style>
         * {
             margin: 0;
@@ -129,8 +130,7 @@
         </div>
     </div>
     <a href="#" class="fixed-btn"><span>$1</span> Refundable</a>
-    {% assign product_count = all_products['green-snowboard'] %}
-    {% assign first_variant = product_count.variants.first %}
+
     <!-- block 2 DOM -->
     <div class="cut-content">
         <video loop class="full-video" playsinline muted autoplay preload="auto">
