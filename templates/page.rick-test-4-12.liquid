@@ -1,6 +1,7 @@
 
     <link rel="stylesheet" href="{{ 'cut.css' | asset_url }}" media="print" onload="this.media='all'">
- <style>
+
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -94,7 +95,7 @@
                             <!-- {% assign product = all_products['x-series-reverse-osmosis-system-replacement-filter-f1a'] %}
     {% assign first_variant = product.variants.first %}
     number：{{ first_variant.inventory_quantity }} -->
-                            <p>38 <i>Left</i></p>
+                            <p>{{ first_variant.inventory_quantity }} <i>Left</i></p>
                             <span>100 Pieces for Early-Bird Spoats</span>
 
                         </div>
@@ -119,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#"><span>$1</span> Refundable</a>
+                    <a href="https://ricktest12.myshopify.com/cart/{{ first_variant.id }}:1"><span>$1</span> Refundable</a>
 
                 </div>
                 <p class="cut-header-word-btn-return"><span>Juy1 </span> Delivery.90-Day Return .1-Year Warranty</p>
@@ -128,6 +129,8 @@
         </div>
     </div>
     <a href="#" class="fixed-btn"><span>$1</span> Refundable</a>
+    {% assign product_count = all_products['green-snowboard'] %}
+    {% assign first_variant = product_count.variants.first %}
     <!-- block 2 DOM -->
     <div class="cut-content">
         <video loop class="full-video" playsinline muted autoplay preload="auto">
@@ -430,10 +433,10 @@
             <div class="cut-header-word-btn cut-mtp">
                 <div class="cut-header-word-down">
                     <div class="cut-header-people-box">
-                        <!-- {% assign product = all_products['x-series-reverse-osmosis-system-replacement-filter-f1a'] %}
+                        <!-- {% assign product = all_products['green-snowboard'] %}
 {% assign first_variant = product.variants.first %}
 number：{{ first_variant.inventory_quantity }} -->
-                        <p>38 <i>Left</i></p>
+                        <p>{{ first_variant.inventory_quantity }} <i>Left</i></p>
                         <span>100 Pieces for Early-Bird Spoats</span>
 
                     </div>
@@ -645,7 +648,7 @@ number：{{ first_variant.inventory_quantity }} -->
                         <!-- {% assign product = all_products['x-series-reverse-osmosis-system-replacement-filter-f1a'] %}
 {% assign first_variant = product.variants.first %}
 number：{{ first_variant.inventory_quantity }} -->
-                        <p>38 <i>Left</i></p>
+                        <p>{{ first_variant.inventory_quantity }} <i>Left</i></p>
                         <span>100 Pieces for Early-Bird Spoats</span>
 
                     </div>
