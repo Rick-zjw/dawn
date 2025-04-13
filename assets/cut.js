@@ -77,7 +77,7 @@
 
         $(document).ready(function () {
             //count down
-            const endDate = new Date(2025, 3, 18, 12, 0, 0);
+            const endDate = new Date(2025, 3, 21, 12, 59, 59);
 
             function updateCountdown() {
                 const now = new Date();
