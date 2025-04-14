@@ -25,8 +25,8 @@
             "button_label_1": "预览页面4.12",
             "button_link_1": "shopify://pages/4-12",
             "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "shopify://pages/cut-test-two",
+            "button_label_2": "3D预览",
+            "button_link_2": "shopify://pages/3d",
             "button_style_secondary_2": true
           }
         }
