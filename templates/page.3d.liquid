@@ -44,45 +44,45 @@
   </main>
 
   <script>
-    // (function ($) {
-    //   const SPIN_SELECTOR = '#spin-instance';
-    //   const FRAME_COUNT = parseInt($(SPIN_SELECTOR).attr('data-frames'), 10);
-    //   const IMAGE_TEMPLATE = $(SPIN_SELECTOR).data('images');
+    (function ($) {
+      const SPIN_SELECTOR = '#spin-instance';
+      const FRAME_COUNT = parseInt($(SPIN_SELECTOR).attr('data-frames'), 10);
+      const IMAGE_TEMPLATE = $(SPIN_SELECTOR).data('images');
 
-    //   /**
-    //    * Initialize Reel spin viewer
-    //    * @param {string} selector - jQuery selector for the target image
-    //    */
-    //   function initializeReel(selector) {
-    //     const $target = $(selector);
-    //     const firstFrame = generateImageSrc(1);
-    //     $target.attr('src', firstFrame);
+      /**
+       * Initialize Reel spin viewer
+       * @param {string} selector - jQuery selector for the target image
+       */
+      function initializeReel(selector) {
+        const $target = $(selector);
+        const firstFrame = generateImageSrc(1);
+        $target.attr('src', firstFrame);
 
-    //     $target.reel({
-    //       frames: FRAME_COUNT,
-    //       frame: 1,
-    //       speed: parseFloat($target.data('speed')),
-    //       cw: $target.data('cw'),
-    //       autospin: $target.data('autospin'),
-    //       loop: $target.data('loop'),
-    //       images: IMAGE_TEMPLATE
-    //     });
-    //   }
+        $target.reel({
+          frames: FRAME_COUNT,
+          frame: 1,
+          speed: parseFloat($target.data('speed')),
+          cw: $target.data('cw'),
+          autospin: $target.data('autospin'),
+          loop: $target.data('loop'),
+          images: IMAGE_TEMPLATE
+        });
+      }
 
-    //   /**
-    //    * Generate full image URL by replacing ## with zero-padded frame number
-    //    * @param {number} frame - Frame index
-    //    * @returns {string} - Image URL
-    //    */
-    //   function generateImageSrc(frame) {
-    //     const padded = String(frame).padStart(2, '0');
-    //     return IMAGE_TEMPLATE.replace('##', padded);
-    //   }
+      /**
+       * Generate full image URL by replacing ## with zero-padded frame number
+       * @param {number} frame - Frame index
+       * @returns {string} - Image URL
+       */
+      function generateImageSrc(frame) {
+        const padded = String(frame).padStart(2, '0');
+        return IMAGE_TEMPLATE.replace('##', padded);
+      }
 
-    //   // Lazy init when DOM ready
-    //   $(document).ready(function () {
-    //     initializeReel(SPIN_SELECTOR);
-    //   });
+      // Lazy init when DOM ready
+      $(document).ready(function () {
+        initializeReel(SPIN_SELECTOR);
+      });
 
-    // })(jQuery);
+    })(jQuery);
   </script>
