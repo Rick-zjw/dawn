@@ -1,10 +1,10 @@
- <style>
-    .3d {
+  <style>
+    .content-3d {
       background: #111;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;width:100vw
+      height: 100vh;width:100vw;
       margin: 0;
     }
 
@@ -15,7 +15,7 @@
       cursor: grab;
     }
   </style>
-  <div class="3d">
+  <div class="content-3d">
     
 <canvas id="viewer" width="500" height="500"></canvas>
   </div>
@@ -31,7 +31,6 @@
   let startX = 0;
   let autoSpinInterval;
 
-  // 加载所有帧图像
   for (let i = 0; i <= frameCount; i++) {
     const img = new Image();
     const num = i.toString().padStart(2, '0');
@@ -39,7 +38,6 @@
     images.push(img);
   }
 
-  // 显示某一帧
   function drawFrame(index) {
     const img = images[index];
     if (img.complete) {
@@ -50,22 +48,19 @@
     }
   }
 
-  // 初始显示第一帧
   drawFrame(currentFrame);
 
-  // 自动旋转
   function startAutoSpin() {
     autoSpinInterval = setInterval(() => {
       currentFrame = (currentFrame + 1) % frameCount;
       drawFrame(currentFrame);
-    }, 200); // 每 100ms 转一帧（可以调快或调慢）
+    }, 200); 
   }
 
   function stopAutoSpin() {
     clearInterval(autoSpinInterval);
   }
 
-  // 鼠标事件
   canvas.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.clientX;
@@ -88,7 +83,6 @@
     startAutoSpin();
   });
 
-  // 触控事件
   canvas.addEventListener('touchstart', (e) => {
     isDragging = true;
     startX = e.touches[0].clientX;
@@ -111,7 +105,6 @@
     startAutoSpin();
   });
 
-  // 延迟 1 秒后开始自动旋转
   setTimeout(() => {
     startAutoSpin();
   }, 1000);
