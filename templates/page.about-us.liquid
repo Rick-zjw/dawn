@@ -1,0 +1,396 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    ul,
+    li {
+        list-style: none;
+    }
+</style>
+
+<style>
+    :root {
+        --font-title-size: 36px;
+        --content-margin-96: 96px;
+    }
+
+    @media screen and (max-width:1024px) {
+        :root {
+            --font-title-size: 26px;
+            --content-margin-96: 60px;
+        }
+    }
+
+    /* block 1 start  */
+    .cut-about-us-header {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    .cut-about-us-header video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    .cut-about-us-header-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        max-width: 383px;
+        font-family: Assistant;
+        text-align: center;
+    }
+
+    .cut-about-us-header-content p {
+        font-size: 42px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 125%;
+    }
+
+    .cut-about-us-header-content .cut-line {
+        width: 80%;
+        height: 1px;
+        background-color: #fff;
+        margin: 24px auto;
+    }
+
+    .cut-about-us-header-content span {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 125%;
+    }
+
+    /* block 1 end  */
+
+
+    /* block 2  start  */
+    .cut-all-content {
+        max-width: 1280px;
+        padding: 0 48px;
+        margin: var(--content-margin-96) auto;
+    }
+
+    .cut-about-us-media {
+        display: flex;
+        gap: 88px;
+    }
+
+    .cut-about-us-media.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .cut-about-us-media .cut-about-us-media-img {
+        border-radius: 10px;
+    }
+
+    .about-us-media-word {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        color: #000;
+        font-family: Assistant;
+        font-style: normal;
+        justify-content: center;
+
+    }
+
+    .cut-about-us-media-svg {
+        width: 86px;
+        height: auto;
+        margin-bottom: -20px;
+    }
+
+    .about-us-media-word .title {
+        font-size: var(--font-title-size);
+        font-weight: 700;
+        line-height: 125%;
+    }
+
+    .about-us-media-word .detail {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 125%;
+    }
+
+    .about-us-media-begin {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 65px;
+    }
+
+    .about-us-media-begin span {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 125%;
+        text-transform: uppercase;
+    }
+
+    .about-us-media-begin p {
+        color: #298DEF;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 125%;
+        text-transform: capitalize;
+    }
+
+    .about-us-media-begin p i {
+        font-size: 16px;
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    .cut-about-us-full {
+        width: 100%;
+        background: linear-gradient(180deg, #F3F8FF 0%, #FFF 100%);
+        padding: 42px 0;
+    }
+
+    /* block 2 end */
+    /* block 3 start */
+    .cut-about-us-faq,
+    .cut-about-video-img {
+        color: #000;
+        text-align: center;
+        font-family: Assistant;
+        font-style: normal;
+        line-height: 125%;
+    }
+
+    .cut-about-us-faq p,
+    .cut-about-video-img p {
+        font-size: var(--font-title-size);
+        font-weight: 700;
+        line-height: 125%;
+        margin-bottom: 24px;
+    }
+
+    .cut-about-us-faq span,
+    .cut-about-video-img span {
+        font-size: 16px;
+        font-weight: 300;
+        margin-bottom: 32px;
+        display: block;
+    }
+
+    .cut-about-us-faq img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* block 3 end */
+    /* block 4 start */
+    .cut-about-video-img {
+        padding: var(--content-margin-96) 58px;
+        background: #F9F9F9;
+    }
+
+    .cut-about-video-img .cut-all-content {
+        margin: 0 auto;
+    }
+
+    .cut-about-video-img-flex {
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .cut-about-video-img-flex video,
+    .cut-about-video-img-flex img {
+        width: 50%;
+        max-height: 400px;
+        object-fit: cover;
+    }
+
+    /* block 4 end */
+    .about-us-bottom-img {
+        display: block;
+        width: 100%;
+    }
+
+    @media screen and (max-width:1024px) {
+        .cut-all-content {
+            padding: 0 40px;
+        }
+
+        /* block 1 start  */
+        .cut-about-us-header-content p {
+            font-size: 26px;
+        }
+
+        .cut-about-us-header {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            height: auto;
+        }
+
+        /* block 1 end  */
+        .cut-about-us-media {
+            gap: 32px;
+        }
+
+        .cut-about-us-media,
+        .cut-about-us-media.cut-about-us-media.reverse {
+            flex-direction: column-reverse;
+        }
+
+        .about-us-media-begin {
+            padding-right: 50%;
+        }
+
+        .about-us-media-begin p {
+            font-size: 26px;
+        }
+
+        .cut-about-video-img-flex {
+            flex-direction: column;
+        }
+
+        .cut-about-video-img-flex video,
+        .cut-about-video-img-flex img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+        .cut-all-content {
+            padding: 0 24px;
+        }
+
+        .cut-about-video-img {
+            padding: var(--content-margin-96) 0;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- block 1 start  -->
+    <div class="cut-about-us-header">
+        <video playsinline muted autoplay
+            src="https://cdn.shopify.com/videos/c/o/v/24c95cabf3b84651a87f33b9c45ed4ac.mp4"></video>
+        <div class="cut-about-us-header-content">
+            <p>A Simple Feeling</p>
+            <div class="cut-line"></div>
+            <span>It started with a simple feeling— <br>
+                the joy of cutting through ripe tomatoes with a knife so sharp, it feels effortless.</span>
+        </div>
+    </div>
+    <!-- block 1 end  -->
+
+    <!-- block 2 start  -->
+    <div class="cut-about-us-media cut-all-content">
+        <img class="cut-about-us-media-img"
+            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img1.jpg?v=1745330546"
+            alt="Four Generations of Craftsmanship">
+        <div class="about-us-media-word">
+            <p class="title">Four Generations of Craftsmanship</p>
+            <span class="detail">My family has been making kitchen knives since 1935.
+                Four generations have passed, and still, we believe a sharp knife isn't a luxury— <br>
+                it's part of a good meal, a quiet moment in the kitchen, a memory shared.</span>
+            <div class="about-us-media-begin">
+                <div class="about-us-media-begin-item">
+                    <span>origin:</span>
+                    <p>1935 <i>yeas</i></p>
+                </div>
+                <div class="about-us-media-begin-item">
+                    <span>inherit</span>
+                    <p>4 <i>generation</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- block 2 end  -->
+    <div class="cut-about-us-full">
+        <div class="cut-about-us-media cut-all-content reverse">
+            <img class="cut-about-us-media-img"
+                src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img2.jpg?v=1745330548"
+                alt="More Than Just Sharpening">
+            <div class="about-us-media-word">
+                <img class="cut-about-us-media-svg"
+                    src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Frame_9018_691f6fc6-28a5-4b99-847b-cf49f0cd98f8.svg?v=1745332454"
+                    alt="cheefarcuut">
+
+                <p class="title">More Than Just Sharpening</p>
+                <span class="detail">
+                    Over the years, we’ve restored countless knives—some over a hundred years old, <br>
+                    passed down as wedding gifts, now used by grandchildren.
+                    We’ve also helped chefs and home cooks discover knives worth keeping for a lifetime. <br>
+                    What we bring back isn't just sharpness, but the warmth of a family tradition.
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- block 3 start -->
+    <div class="cut-about-us-faq cut-all-content">
+        <p>The Problem We Kept Hearing</p>
+        <span>But we also saw frustration— <br>
+            dull blades, chipped edges, expensive sharpening services, long shipping waits.<br>
+            Many of our customers had no simple way to keep their knives in great shape.</span>
+        <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img3.jpg?v=1745330549"
+            alt="The Problem We Kept Hearing">
+    </div>
+    <!-- block 3 end -->
+    <!-- block 4 start -->
+    <div class="cut-about-video-img">
+        <div class="cut-all-content">
+            <p>So We Created Something Better Not just beautiful knives—</p>
+            <span>but also a sharpening system designed by engineers,forged with solid diamond material and
+                high-temperature
+                sintering.Durable, intuitive, and easy to use with a whetstone.It brings blades back to razor-sharp—in
+                under
+                a minute.</span>
+            <div class="cut-about-video-img-flex">
+                <video src="https://cdn.shopify.com/videos/c/o/v/24c95cabf3b84651a87f33b9c45ed4ac.mp4" playsinline muted
+                    autoplay></video>
+                <img src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img5-min.jpg?v=1745333347"
+                    alt="So We Created Something Better Not just beautiful knives—">
+            </div>
+        </div>
+
+    </div>
+    <!-- block 4 end -->
+
+    <div class="cut-about-us-media cut-all-content reverse">
+        <img class="cut-about-us-media-img"
+            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img4.jpg?v=1745330547"
+            alt="Every Home Deserves Sharpness">
+        <div class="about-us-media-word">
+            <p class="title">Every Home Deserves Sharpness</p>
+            <span class="detail">Because we believe every home deserves sharp knives. <br>
+                And every meal deserves to feel just a little more satisfying.</span>
+
+        </div>
+    </div>
+
+    <picture>
+        <source media="(max-width: 767px)"
+            srcset="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img-bottom-mo-min.jpg?v=1745333826" />
+
+        <source media="(max-width: 1024px)"
+            srcset="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img-bottom-pad-min.jpg?v=1745333826" />
+
+        <img loading="lazy" decoding="async"
+            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img-bottom-pc-min.png"
+            alt="Cheefarcut Sharpener – Estimated Project Timeline" class="cut-all-content about-us-bottom-img" />
+    </picture>
