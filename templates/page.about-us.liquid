@@ -394,3 +394,13 @@
             src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/cut-about-img-bottom-pc-min.png"
             alt="Cheefarcut Sharpener – Estimated Project Timeline" class="cut-all-content about-us-bottom-img" />
     </picture>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("responsive-video");
+    const isMobile = window.innerWidth <= 767;
+    const mobileSrc = "https://cdn.shopify.com/videos/c/o/v/5384e01fc78b4ad7adc3a6fa712e218f.mp4";
+    const desktopSrc = "https://cdn.shopify.com/videos/c/o/v/e11d0ac71cca43a491fc9ba0ca09ddde.mp4";
+
+    video.src = isMobile ? mobileSrc : desktopSrc;
+  });
+</script>
