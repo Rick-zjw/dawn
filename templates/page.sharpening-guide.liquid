@@ -1,0 +1,680 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --margin-96: 96px;
+    }
+
+    .faq-first-synopsis iframe,
+    .faq-use-item iframe,
+    .cut-product-faq-content-item-des iframe {
+        border-radius: 8px;
+    }
+
+    .faq-banner {
+
+
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        object-fit: cover;
+    }
+
+    .content {
+        max-width: 1280px;
+        padding: 0 48px;
+        margin: var(--margin-96) auto;
+    }
+
+    .faq-first-synopsis {
+        display: flex;
+        gap: 56px;
+    }
+
+    .faq-first-synopsis iframe {
+        flex: 1;
+        max-width: calc(60% - 28px);
+        height: 427px;
+    }
+
+    .faq-first-synopsis-word {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        flex: 1;
+        max-width: calc(40% - 28px);
+    }
+
+    .faq-first-synopsis-word p {
+        font-family: Assistant;
+        font-weight: bold;
+        font-size: 36px;
+        color: #000000;
+        line-height: 130%;
+        font-style: normal;
+    }
+
+    .faq-first-synopsis-word ul {
+        width: 100%;
+        padding-left: 40px;
+    }
+
+    .faq-first-synopsis-word li {
+        font-family: Assistant;
+        font-weight: 300;
+        font-size: 16px;
+        color: #000000;
+        line-height: 20px;
+        text-align: left;
+        font-style: normal;
+    }
+
+    .faq-first-synopsis-word-btns {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        gap: 24px;
+    }
+
+    .faq-first-synopsis-word-btns a {
+        background: #FFCC00;
+        border-radius: 4px;
+        height: 45px;
+        flex: 1;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-family: Assistant;
+        font-weight: 600;
+        font-size: 14px;
+        color: #000000;
+        text-align: center;
+        font-style: normal;
+        text-transform: none;
+    }
+
+    .faq-use-videos {
+        padding-top: var(--margin-96);
+        display: flex;
+        gap: 20px;
+    }
+
+    .faq-use-item {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .faq-use-item p {
+        font-family: Assistant;
+        font-weight: bold;
+        font-size: 30px;
+        color: #000000;
+        line-height: 38px;
+        text-align: left;
+        font-style: normal;
+        text-transform: none;
+    }
+
+    .faq-use-item span {
+        font-family: Assistant;
+        font-weight: 400;
+        font-size: 16px;
+        color: #000000;
+        line-height: 20px;
+        text-align: left;
+        font-style: normal;
+        text-transform: none;
+    }
+
+    .faq-bottom-block {
+        width: 100%;
+        background: linear-gradient(180deg, #F8F8F8 0%, rgba(248, 248, 248, 0) 100%);
+        padding-top: var(--margin-96);
+    }
+
+    @media screen and (max-width:1024px) {
+
+        :root {
+            --margin-96: 60px;
+        }
+
+        .faq-first-synopsis,
+        .faq-use-videos {
+            flex-direction: column;
+        }
+
+        .faq-first-synopsis iframe {
+            max-width: 100%;
+            height: 432px;
+            flex: none;
+        }
+
+        .faq-first-synopsis-word {
+            max-width: 100%;
+        }
+
+        .faq-use-item iframe {
+            height: 430px;
+        }
+    }
+
+    @media screen and (max-width:767px) {
+
+        .faq-first-synopsis-word p,
+        .faq-use-item p {
+            font-size: 26px;
+        }
+
+        .faq-first-synopsis iframe,
+        .faq-use-item iframe,
+        .cut-product-faq-content-item-des iframe {
+            height: 220px;
+        }
+
+        .faq-bottom-block {
+            padding-top: 0;
+        }
+    }
+</style>
+<style>
+    .cut-product-faq {
+        max-width: 1280px;
+        padding: 0 48px;
+        margin: 0 auto var(--margin-96);
+        display: flex;
+        gap: var(--margin-96);
+        border-radius: 10px;
+    }
+
+    .cut-product-faq-title {
+        color: #21272A;
+        font-family: Assistant;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-transform: capitalize;
+        margin-bottom: 24px;
+    }
+
+    .cut-product-faq-text {
+        max-width: 400px;
+        min-width: 400px;
+    }
+
+    .cut-product-faq-des {
+        color: #000;
+        font-family: Assistant;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        margin-bottom: 32px;
+    }
+
+    .cut-product-faq-content {
+        width: 100%;
+        background-color: #FFF;
+        padding: 40px;
+    }
+
+    .cut-product-faq-content-item {
+        border-top: 1px solid #EEE;
+        transition: 1s all;
+    }
+
+    .cut-product-faq-content-item-title {
+        color: #000;
+        font-family: Assistant;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        cursor: pointer;
+        gap: 8px;
+    }
+
+    .cut-product-faq-content-item-title svg {
+        display: block;
+        width: 14px;
+        height: 14px;
+    }
+
+    .cut-product-faq-content-item-title-content {
+        widtH: calc(100% - 22px);
+    }
+
+    .cut-product-faq-content-item-des {
+        padding-bottom: 20px;
+        color: #000;
+        font-family: Assistant;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 180%;
+    }
+
+
+
+    .cut-product-faq-content-item-active .cut-product-faq-content-item-title svg {
+        transform: rotate(180deg);
+        transition: 0.5s all;
+    }
+
+    .cut-product-faq-content-item-des {
+        display: none;
+    }
+
+    .cut-product-faq-content-items-click-btn {
+        display: none;
+    }
+
+    @media screen and (max-width: 1280px) and (min-width: 1025px) {
+        /* .cut-product-faq{
+      max-width: 960px;
+    padding: 48px;
+      gap: 48px;
+    } */
+    }
+
+    @media screen and (max-width:1024px) {
+        .cut-product-faq {
+            margin: 60px auto;
+            gap: 40px;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .cut-product-faq-text {
+            width: 218px;
+        }
+
+        .cut-product-faq-title {
+            font-size: 24px;
+        }
+
+        .cut-product-faq-content {
+            width: calc(100% - 258px);
+        }
+    }
+
+    @media screen and (max-width:767px) {
+        .cut-product-faq {
+            margin: 40px auto;
+            padding: 40px 24px;
+            gap: 32px;
+            flex-direction: column;
+        }
+
+        .content {
+            padding: 16px;
+        }
+
+        .cut-product-faq-text {
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+        }
+
+        .cut-product-faq-title {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .cut-product-faq-content {
+            width: 100%;
+            padding: 0;
+        }
+
+        .cut-product-faq-content-items-more {
+            display: none;
+        }
+
+        .cut-product-faq-content-items-click-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 16px;
+            color: var(--colour-text-primary, #000);
+            text-align: center;
+            font-family: Assistant;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-transform: uppercase;
+            gap: 4px;
+        }
+
+        .cut-product-faq-content-items-click-btn .cut-product-faq-content-items-click-btn-more {
+            display: block;
+        }
+
+        .cut-product-faq-content-items-click-btn .cut-product-faq-content-items-click-btn-close {
+            display: none;
+        }
+
+        .cut-product-faq-content-items-click-btn.active .cut-product-faq-content-items-click-btn-more {
+            display: none;
+        }
+
+        .cut-product-faq-content-items-click-btn.active .cut-product-faq-content-items-click-btn-close {
+            display: block;
+        }
+
+        .cut-product-faq-content-items-click-btn svg {
+            transition: 0.5s all;
+        }
+
+        .cut-product-faq-content-items-click-btn.active svg {
+            transform: rotate(180deg);
+        }
+    }
+</style>
+
+    <picture>
+        <source media="(max-width: 767px)"
+            srcset="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/wechat_2025-05-16_111406_168.png?v=1747365268">
+        <source media="(min-width: 768px) and (max-width: 1023px)"
+            srcset="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/wechat_2025-05-16_110639_372.png?v=1747364810">
+        <source media="(min-width: 1024px)"
+            srcset="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/wechat_2025-05-16_100225_101.png?v=1747360958">
+        <img class="faq-banner"
+            src="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/wechat_2025-05-16_100225_101.png?v=1747360958"
+            alt="Tutorial sharpener">
+    </picture>
+
+    <div class="faq-first-synopsis content">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/plqhXRdoO_0?si=QaFGX4hCrp4QMZAf"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        <div class="faq-first-synopsis-word">
+            <p>Precision Kitchen Knife Sharpener – In the Box</p>
+            <ul>
+                <li>1× Knife Sharpener</li>
+                <li>1× Scissor Clamp</li>
+                <li>1× 400/1000 Grit Sharpening Stone</li>
+                <li>1× User Manual</li>
+                <li>1× Water Spray Bottle</li>
+                <li>1× Digital Angle Finder + Charging Cable</li>
+                <li>1× Maintenance Oil, Tools & Spare Parts Kit</li>
+            </ul>
+            <div class="faq-first-synopsis-word-btns">
+                <a href="https://cdn.shopify.com/s/files/1/0687/6128/8960/files/Cheefarcut_Razor_Edge_Precision_System_User_Manual.pdf?v=1747146507"
+                    target="_blank" class="button">View User's Guide</a>
+                <a href="https://www.cheefarcut.com/pages/cheefarcut-diamond-knife-sharpener-1-preorder-40-off-only-108-spots-b"
+                    target="_blank" class="button" style="margin-left: 12px;">View Sharpener</a>
+            </div>
+        </div>
+    </div>
+    <div class="faq-use-videos content">
+        <div class="faq-use-item">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/NAXu3X921jY?si=sQ7agHiQp4BIZntb"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+            <p>Desktop Setup – Stable & Precise</p>
+            <span>Sharpen anytime, anywhere.Rubber feet and screw lock keep the base stable on any table.Perfect for
+                quick, clean sharpening in kitchens or workshops.</span>
+        </div>
+        <div class="faq-use-item">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/H3ePTVbVN00?si=epHqMP0581rajnVx"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+            <p>Sink Setup – Clean & Efficient</p>
+            <span>Sharpen directly over the sink for easy water drainage. Lock the water tray, spray, and rinse as you
+                sharpen. Ideal for longer sessions or wet sharpening techniques.</span>
+        </div>
+    </div>
+    <div class="faq-bottom-block">
+        <div class="cut-page-content">
+            <div class="cut-product-faq">
+                <div class="cut-product-faq-text">
+                    <div class="cut-product-faq-title">
+                        FAQ
+                    </div>
+                    <div class="cut-product-faq-des">
+                        To solve some common problems for you
+                    </div>
+                </div>
+                <div class="cut-product-faq-content">
+                    <div class="cut-product-faq-content-item">
+                        <div class="cut-product-faq-content-item-title">
+                            <div class="cut-product-faq-content-item-title-content">
+                                1. What should I do if the whetstone is stuck and won't come out?
+                            </div>
+                            <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                    stroke-linejoin="round">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="cut-product-faq-content-item-des">
+                            <iframe loading="lazy" width="100%" height="315"
+                                src="https://www.youtube.com/embed/2Q2DxJXbERw?si=O1GLIunLsUrJqKRH"
+                                title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="cut-product-faq-content-item">
+                        <div class="cut-product-faq-content-item-title">
+                            <div class="cut-product-faq-content-item-title-content">
+                                2. What if the sharpener cannot be extended or retracted?</div>
+                            <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                    stroke-linejoin="round">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="cut-product-faq-content-item-des">
+                            <iframe loading="lazy" width="100%" height="315"
+                                src="https://www.youtube.com/embed/C3GoEIGD57M?si=2rKQScipScAmCZ8J"
+                                title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="cut-product-faq-content-item">
+                        <div class="cut-product-faq-content-item-title">
+                            <div class="cut-product-faq-content-item-title-content">
+                                3. How to assemble the sharpener correctly?
+                            </div>
+                            <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                    stroke-linejoin="round">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="cut-product-faq-content-item-des">
+                            <iframe loading="lazy" width="100%" height="315"
+                                src="https://www.youtube.com/embed/WU-oBsBvF_A?si=6T2OGalrD68gCPHx"
+                                title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="cut-product-faq-content-item">
+                        <div class="cut-product-faq-content-item-title">
+                            <div class="cut-product-faq-content-item-title-content">
+                                4. How to adjust from a wide angle (e.g., 28° to 18°)?
+                            </div>
+                            <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                    stroke-linejoin="round">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="cut-product-faq-content-item-des">
+                            <iframe loading="lazy" width="100%" height="315"
+                                src="https://www.youtube.com/embed/DQIls5QdFS0" title="Wide Angle Adjustment"
+                                frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="cut-product-faq-content-items-more">
+                        <div class="cut-product-faq-content-item">
+                            <div class="cut-product-faq-content-item-title">
+                                <div class="cut-product-faq-content-item-title-content">
+                                    5. How to fine-tune from 17.6° to 18° precisely?</div>
+                                <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="cut-product-faq-content-item-des">
+                                <iframe loading="lazy" width="100%" height="315"
+                                    src="https://www.youtube.com/embed/ENJxCCN0ouA" title="Fine-tuning Angle"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cut-product-faq-content-items-more">
+                        <div class="cut-product-faq-content-item">
+                            <div class="cut-product-faq-content-item-title">
+                                <div class="cut-product-faq-content-item-title-content">
+                                    6. How to replace the rubber pads on the clamp?</div>
+                                <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="cut-product-faq-content-item-des">
+                                <iframe loading="lazy" width="100%" height="315"
+                                    src="https://www.youtube.com/embed/oyIsuOcxs68" title="Clamp Pad Replacement"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="cut-product-faq-content-items-more">
+                        <div class="cut-product-faq-content-item">
+                            <div class="cut-product-faq-content-item-title">
+                                <div class="cut-product-faq-content-item-title-content">
+                                    7. How to replace the rubber pads on the base?</div>
+                                <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="cut-product-faq-content-item-des">
+                                <iframe loading="lazy" width="100%" height="315"
+                                    src="https://www.youtube.com/embed/CF5ZS149rfI" title="Base Pad Replacement"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="cut-product-faq-content-items-more">
+                        <div class="cut-product-faq-content-item">
+                            <div class="cut-product-faq-content-item-title">
+                                <div class="cut-product-faq-content-item-title-content">
+                                    8. How to choose the correct sharpening angle for different knives?</div>
+                                <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="cut-product-faq-content-item-des">
+                                Each knife type has its own ideal sharpening angle.
+                                <br>Refer to our user manual for typical ranges.
+                                <br>- Use the 15-hole system for coarse angle tuning
+                                <br>- Use clamp rotation for fine tuning
+                                <br>- Use the included digital angle finder to set precise angle
+
+                                <br><br><strong>Pro Tip:</strong>
+                                <br>Apply the same angle across all your knives for faster sharpening and great results.
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="cut-product-faq-content-items-more">
+                        <div class="cut-product-faq-content-item">
+                            <div class="cut-product-faq-content-item-title">
+                                <div class="cut-product-faq-content-item-title-content">
+                                    9. Can I use my own whetstones? What sizes are supported?</div>
+                                <svg width="14" height="15" viewbox="0 0 14 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 5.25L7 10.25L12 5.25" stroke="black" stroke-width="1.25"
+                                        stroke-linejoin="round">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="cut-product-faq-content-item-des">
+                                Yes, you can!
+                                <br>Minimum sizes:
+                                <br>- Length: 180mm
+                                <br>- Width: 50mm
+                                <br>- Thickness: 11mm
+
+                                <br><br>If your stones vary in thickness, sharpening angle changes.
+                                <br>Use same-thickness stones for best experience.
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="cut-product-faq-content-items-click-btn">
+                        <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 4.5L7 9.5L12 4.5" stroke="black" stroke-width="1.25" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                        <div class="cut-product-faq-content-items-click-btn-more">MORE</div>
+                        <div class="cut-product-faq-content-items-click-btn-close">CLOSE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script>
+    $('body').on('click', '.cut-product-faq-content-item-title', function () {
+        if ($(this).parents('.cut-product-faq-content-item').hasClass('cut-product-faq-content-item-active')) {
+            $(this).parents('.cut-product-faq-content-item').removeClass('cut-product-faq-content-item-active');
+            $(this).parents('.cut-product-faq-content-item').find('.cut-product-faq-content-item-des').slideUp(500);
+        } else {
+            $(this).parents('.cut-product-faq-content').find('.cut-product-faq-content-item').removeClass('cut-product-faq-content-item-active');
+            $(this).parents('.cut-product-faq-content-item').addClass('cut-product-faq-content-item-active');
+            $(this).parents('.cut-product-faq-content').find('.cut-product-faq-content-item-des').slideUp(500);
+            $(this).parents('.cut-product-faq-content-item').find('.cut-product-faq-content-item-des').slideDown(500);
+        }
+    })
+    $('.cut-product-faq-content-items-click-btn').click(function () {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass('active');
+            $(this).siblings('.cut-product-faq-content-items-more').slideUp(500);
+            $('html, body').animate({
+                scrollTop: $('#faq-content').offset().top - 72
+            }, 500);
+        } else {
+            $(this).addClass('active');
+            $(this).siblings('.cut-product-faq-content-items-more').slideDown(500);
+        }
+    })
+
+</script>
