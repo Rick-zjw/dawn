@@ -1,6 +1,102 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "FAQ Products",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "FAQ Products Section"
+    }
+  ]
+}
 {% endschema %}
+<style>
+  .faq-products {
+      display: flex;
+      gap: 20px;
+      font-family: Assistant;
+  }
+
+  .faq-products-img {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+  }
+
+  .faq-products-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+  }
+
+  .faq-products-item img:hover {
+      transform: scale(1.1);
+      overflow: hidden;
+  }
+
+  .faq-products-item p {
+      font-weight: bold;
+      font-size: 30px;
+      color: #000000;
+      line-height: 120%;
+      text-align: left;
+      font-style: normal;
+      text-transform: none;
+      width: 100%;
+      margin: 24px 0;
+  }
+
+  .faq-products-item .faq-add-cart-btn {
+      width: 100%;
+      height: 45px;
+      background: #FFCC00;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: #000000;
+      text-align: center;
+      font-style: normal;
+      text-transform: none;
+      cursor: pointer;
+  }
+</style>
+<div class="faq-products content">
+  {% for block in section.blocks %}
+    {% assign product = all_products[block.settings.product] %}
+    {% if product %}
+      <div class="faq-products-item">
+        <a href="{{ product.url }}">
+          <div class="faq-products-img">
+            <img
+              src="{{ product.featured_image | img_url: 'medium' }}"
+              alt="{{ product.title }}"
+              loading="lazy"
+            >
+          </div>
+          <p>{{ product.title }}</p>
+        </a>
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          <button type="submit" class="faq-add-cart-btn">Add to cart</button>
+        </form>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
