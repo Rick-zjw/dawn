@@ -136,24 +136,6 @@
       },
       "cut-product-list": {
         "type": "cut-product-list",
-        "blocks": {
-          "product_item_HNAEWA": {
-            "type": "product_item",
-            "settings": {
-              "product": "yellow-snowboard"
-            }
-          },
-          "product_item_GpKAed": {
-            "type": "product_item",
-            "settings": {
-              "product": "green-snowboard"
-            }
-          }
-        },
-        "block_order": [
-          "product_item_HNAEWA",
-          "product_item_GpKAed"
-        ],
         "settings": {}
       }
     },
