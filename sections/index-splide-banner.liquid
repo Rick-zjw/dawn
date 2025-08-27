@@ -50,48 +50,33 @@
 <section class="wd-index-splide splide" aria-label="Full Screen Banner">
   <div class="splide__track">
     <ul class="splide__list">
-      <!-- Slide 1 -->
-      <li class="splide__slide">
-        <div class="wd-index-banner-slide">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920" alt="Banner 1" loading="eager" fetchpriority="high" />
-          <div class="wd-index-banner-caption-box">
-            <div class="wd-index-banner-caption">
-              <span>Next-Gen Guided Knife Sharpener</span>
-              <h2>Razor-Sharp in Just 3 Minutes!</h2>
-              <p>Sharpen 1,000 knives with precision.</p>
-              <p>4mm vitrified diamond stone, 1s flip clamp, quad U-bearing + linear rails, and pro-grade control.</p>
-              <a class="wd-index-link-btn" href="/">Buy Now
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <path d="M15.586 10.6569L11.636 6.70692c-.182-.189-.283-.441-.28-.703s.108-.513.293-.698.436-.29.698-.292.513.108.702.29l5.657 5.657c.093.093.167.203.217.324s.076.251.076.382-.026.262-.076.383-.124.22-.217.312l-5.657 5.657a1 1 0 0 1-1.4 0c-.094-.094-.168-.206-.218-.328s-.077-.252-.078-.385  .028-.264.08-.386.125-.21.22-.303l3.95-3.95H6a1 1 0 0 1 0-2h9.586Z" fill="black"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </li>
+     {% for slide in section.blocks %}
+        {% if slide.type == 'slide' %}
+          <li class="splide__slide" id="slide-{{ slide.id }}">
+            <div class="wd-index-banner-slide">
+              <img src="{{ slide.settings.image | image_url: width: 1920 }}" alt="{{ slide.settings.alt | escape }}" loading="lazy">
 
-      <!-- Slide 2 -->
-      <li class="splide__slide">
-        <div class="wd-index-banner-slide">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920" alt="Banner 2" loading="lazy" />
-          <div class="wd-index-banner-caption-box">
-            <div class="wd-index-banner-caption">
-              <span>Next-Gen Guided Knife Sharpener</span>
-              <h2>Razor-Sharp in Just 3 Minutes!</h2>
-              <p>Sharpen 1,000 knives with precision.</p>
-              <p>4mm vitrified diamond stone, 1s flip clamp, quad U-bearing + linear rails, and pro-grade control.</p>
-              <a class="wd-index-link-btn" href="/">Buy Now</a>
-            </div>
-          </div>
-        </div>
-      </li>
+              <div class="wd-index-banner-caption-box">
+                <div class="wd-index-banner-caption">
+                  {% if slide.settings.eyebrow != blank %}<span>{{ slide.settings.eyebrow }}</span>{% endif %}
+                  {% if slide.settings.title != blank %}<h2>{{ slide.settings.title }}</h2>{% endif %}
 
-      <!-- Slide 3（纯图） -->
-      <li class="splide__slide">
-        <div class="wd-index-banner-slide">
-          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1920" alt="Banner 3" loading="lazy" />
-        </div>
-      </li>
+                  {%- comment -%} 输出属于这个 slide 的描述 {%- endcomment -%}
+                  {% for desc in section.blocks %}
+                    {% if desc.type == 'desc' and desc.settings.parent == slide.id %}
+                      <p>{{ desc.settings.text }}</p>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if slide.settings.btn_label != blank and slide.settings.btn_link != blank %}
+                    <a class="wd-index-link-btn" href="{{ slide.settings.btn_link }}">{{ slide.settings.btn_label }}</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
     </ul>
   </div>
 </section>
@@ -119,3 +104,30 @@
   });
 </script>
 <!-- ===== Banner Section End ===== -->
+{
+  "name": "Splide banner",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Alt text" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "btn_label", "label": "Button label" },
+        { "type": "url", "id": "btn_link", "label": "Button link" }
+      ]
+    },
+    {
+      "type": "desc",
+      "name": "Description",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Description text" },
+        { "type": "text", "id": "parent", "label": "Parent slide ID (手动填 slide 的ID)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Splide banner" }]
+}
