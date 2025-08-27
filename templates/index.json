@@ -277,7 +277,25 @@
     },
     "index-reviews_cards": {
       "type": "index-reviews-cards",
-      "settings": {}
+      "blocks": {
+        "review_Te6Xti": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "avatar": "shopify://shop_images/rick.png",
+            "reviewer": "KKF Member",
+            "content": "very good",
+            "product": "black-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "review_Te6Xti"
+      ],
+      "settings": {
+        "title": "Trusted by 1,000+ Knife Owners"
+      }
     }
   },
   "order": [
