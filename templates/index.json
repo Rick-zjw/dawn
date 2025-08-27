@@ -249,6 +249,44 @@
     },
     "index-reviews_cards": {
       "type": "index-reviews-cards",
+      "blocks": {
+        "review_aUy4WN": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "reviewer": "KKF Member",
+            "content": "",
+            "product": "yellow-snowboard"
+          }
+        },
+        "review_Yr9EqU": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "reviewer": "KKF Member",
+            "content": "",
+            "product": "example-hat"
+          }
+        },
+        "review_qEP8b4": {
+          "type": "review",
+          "settings": {
+            "show_stars": true,
+            "rating": 5,
+            "avatar": "shopify://shop_images/rick.png",
+            "reviewer": "KKF Member",
+            "content": "132",
+            "product": "black-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "review_aUy4WN",
+        "review_Yr9EqU",
+        "review_qEP8b4"
+      ],
       "settings": {
         "title": "Trusted by 1,000+ Knife Owners"
       }
