@@ -1,5 +1,5 @@
 <!-- ===== Banner Section Start ===== -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
 <style>
       * {
@@ -64,21 +64,34 @@
                   src="{{ slide.settings.image | image_url: width: 1920 }}"
                   alt="{{ slide.settings.alt | escape }}"
                   loading="{{ forloop.first | default: false | ternary: 'eager', 'lazy' }}"
-                  {% if forloop.first %}fetchpriority="high"{% endif %}
+                  {% if forloop.first %}
+                    fetchpriority="high"
+                  {% endif %}
                 >
               {% endif %}
 
               <div class="wd-index-banner-caption-box">
                 <div class="wd-index-banner-caption">
-                  {% if slide.settings.eyebrow != blank %}<span>{{ slide.settings.eyebrow }}</span>{% endif %}
-                  {% if slide.settings.title != blank %}<h2>{{ slide.settings.title }}</h2>{% endif %}
+                  {% if slide.settings.eyebrow != blank -%}
+                    <span>{{ slide.settings.eyebrow }}</span>
+                  {%- endif %}
+                  {% if slide.settings.title != blank %}
+                    <h2>{{ slide.settings.title }}</h2>
+                  {% endif %}
 
                   {%- comment -%} 固定三条描述：按开关与内容判断输出 {%- endcomment -%}
-            {% if slide.settings.desc1 %} <p>{{ slide.settings.desc1 }}</p>{% endif %}     
-            {% if slide.settings.desc2 %} <p>{{ slide.settings.desc2 }}</p>{% endif %}     
-            {% if slide.settings.desc3 %} <p>{{ slide.settings.desc3 }}</p>{% endif %}     
-                
-                
+                  <div>
+                    {% if slide.settings.desc1 %}
+                      <p>{{ slide.settings.desc1 }}</p>
+                    {% endif %}
+                    {% if slide.settings.desc2 %}
+                      <p>{{ slide.settings.desc2 }}</p>
+                    {% endif %}
+                    {% if slide.settings.desc3 %}
+                      <p>{{ slide.settings.desc3 }}</p>
+                    {% endif %}
+                  </div>
+
                   {% if slide.settings.btn_label != blank and slide.settings.btn_link != blank %}
                     <a class="wd-index-link-btn" href="{{ slide.settings.btn_link }}">
                       {{ slide.settings.btn_label }}
@@ -96,7 +109,6 @@
     </ul>
   </div>
 </section>
-
 
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script>
