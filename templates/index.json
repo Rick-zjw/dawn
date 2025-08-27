@@ -35,6 +35,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -47,18 +48,6 @@
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
-    },
-    "index-splide_banner": {
-      "type": "index-splide-banner",
-      "settings": {}
-    },
-    "index-best_seller": {
-      "type": "index-best-seller",
-      "settings": {}
-    },
-    "index-reviews_cards": {
-      "type": "index-reviews-cards",
-      "settings": {}
     },
     "rich_text": {
       "type": "rich-text",
@@ -194,6 +183,18 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "index-splide_banner": {
+      "type": "index-splide-banner",
+      "settings": {}
+    },
+    "index-best_seller": {
+      "type": "index-best-seller",
+      "settings": {}
+    },
+    "index-reviews_cards": {
+      "type": "index-reviews-cards",
+      "settings": {}
     }
   },
   "order": [
