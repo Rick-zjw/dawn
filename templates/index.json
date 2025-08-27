@@ -48,6 +48,18 @@
         "show_text_below": false
       }
     },
+    "index-splide_banner": {
+      "type": "index-splide-banner",
+      "settings": {}
+    },
+    "index-best_seller": {
+      "type": "index-best-seller",
+      "settings": {}
+    },
+    "index-reviews_cards": {
+      "type": "index-reviews-cards",
+      "settings": {}
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -190,6 +202,9 @@
     "featured_collection",
     "collage",
     "video",
-    "multicolumn"
+    "multicolumn",
+    "index-splide_banner",
+    "index-best_seller",
+    "index-reviews_cards"
   ]
 }
