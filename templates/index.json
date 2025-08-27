@@ -200,10 +200,25 @@
             "btn_label": "buy now",
             "btn_link": "shopify://pages/about-us"
           }
+        },
+        "slide_ew6YQL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
+            "alt": "slide2",
+            "eyebrow": "eybrow2",
+            "title": "Title2",
+            "desc1": "123",
+            "desc2": "234",
+            "desc3": "345",
+            "btn_label": "test btn",
+            "btn_link": "shopify://pages/3d"
+          }
         }
       },
       "block_order": [
-        "slide_dTikqH"
+        "slide_dTikqH",
+        "slide_ew6YQL"
       ],
       "settings": {}
     },
