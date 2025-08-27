@@ -186,6 +186,22 @@
     },
     "index-splide_banner": {
       "type": "index-splide-banner",
+      "blocks": {
+        "slide_dTikqH": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/9022a705161ff42b7879d88f1fd6d0e8.png",
+            "alt": "132",
+            "eyebrow": "Eyebrow",
+            "title": "Title",
+            "btn_label": "buy now",
+            "btn_link": "shopify://pages/about-us"
+          }
+        }
+      },
+      "block_order": [
+        "slide_dTikqH"
+      ],
       "settings": {}
     },
     "index-best_seller": {
