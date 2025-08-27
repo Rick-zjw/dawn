@@ -36,85 +36,102 @@
 
 <section class="reviews-section">
   <div class="reviews">
-    <h2 class="reviews__title">Trusted by 1,000+ Knife Owners</h2>
+    {% if section.settings.title != blank %}
+      <h2 class="reviews__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
     <div class="reviews__list">
-      <!-- Card 1 -->
-      <article class="review-card">
-        <div class="review-card__header">
-          <svg class="review-card__stars" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z"/>
-            <path d="M29.825 21L31.45 13.975L26 9.25L33.2 8.625L36 2L38.8 8.625L46 9.25L40.55 13.975L42.175 21L36 17.275L29.825 21Z"/>
-            <path d="M53.825 21L55.45 13.975L50 9.25L57.2 8.625L60 2L62.8 8.625L70 9.25L64.55 13.975L66.175 21L60 17.275L53.825 21Z"/>
-            <path d="M77.825 21L79.45 13.975L74 9.25L81.2 8.625L84 2L86.8 8.625L94 9.25L88.55 13.975L90.175 21L84 17.275L77.825 21Z"/>
-            <path d="M101.825 21L103.45 13.975L98 9.25L105.2 8.625L108 2L110.8 8.625L118 9.25L112.55 13.975L114.175 21L108 17.275L101.825 21Z"/>
-          </svg>
-          <div class="review-card__user">
-            <span class="review-card__name">Rramski, KKF Member</span>
-            <img class="review-card__avatar" src="https://mockimg.co/80" alt="User avatar">
-          </div>
-        </div>
-        <p class="review-card__content">Sharpened dozens of knives in steels like MagnaCut & Apex Ultra. Consistently achieves sub-100 BESS edges.</p>
-        <div class="review-card__product">
-          <img class="review-card__product-img" src="https://mockimg.co/100" alt="product">
-          <div class="review-card__product-info">
-            <p class="review-card__product-title">Knife Sharpener Pro</p>
-            <span class="review-card__product-price">$199 <del>$299</del></span>
-          </div>
-        </div>
-      </article>
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <article class="review-card" {{ block.shopify_attributes }}>
+            <div class="review-card__header">
+              {% if block.settings.show_stars %}
+                {% assign rating = block.settings.rating | default: 5 | plus: 0 %}
+                <div class="review-card__stars" aria-label="{{ rating }} out of 5 stars">
+                  <svg width="120" height="24" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false">
+                    {% for i in (0..4) %}
+                      <path class="star {% if i < rating %}star--filled{% endif %}"
+                            d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z"
+                            transform="translate({{ i | times: 24 }},0)"/>
+                    {% endfor %}
+                  </svg>
+                </div>
+              {% endif %}
 
-      <!-- Card 2 -->
-      <article class="review-card">
-        <div class="review-card__header">
-          <svg class="review-card__stars" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- 同上省略路径，可复用 -->
-            <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z"/>
-            <path d="M29.825 21L31.45 13.975L26 9.25L33.2 8.625L36 2L38.8 8.625L46 9.25L40.55 13.975L42.175 21L36 17.275L29.825 21Z"/>
-            <path d="M53.825 21L55.45 13.975L50 9.25L57.2 8.625L60 2L62.8 8.625L70 9.25L64.55 13.975L66.175 21L60 17.275L53.825 21Z"/>
-            <path d="M77.825 21L79.45 13.975L74 9.25L81.2 8.625L84 2L86.8 8.625L94 9.25L88.55 13.975L90.175 21L84 17.275L77.825 21Z"/>
-            <path d="M101.825 21L103.45 13.975L98 9.25L105.2 8.625L108 2L110.8 8.625L118 9.25L112.55 13.975L114.175 21L108 17.275L101.825 21Z"/>
-          </svg>
-          <div class="review-card__user">
-            <span class="review-card__name">Rramski, KKF Member</span>
-            <img class="review-card__avatar" src="https://mockimg.co/80" alt="User avatar">
-          </div>
-        </div>
-        <p class="review-card__content">Sharpened dozens of knives in steels like MagnaCut & Apex Ultra. Consistently achieves sub-100 BESS edges.</p>
-        <div class="review-card__product">
-          <img class="review-card__product-img" src="https://mockimg.co/100" alt="product">
-          <div class="review-card__product-info">
-            <p class="review-card__product-title">Knife Sharpener Pro</p>
-            <span class="review-card__product-price">$199 <del>$299</del></span>
-          </div>
-        </div>
-      </article>
+              <div class="review-card__user">
+                <span class="review-card__name">{{ block.settings.reviewer | default: 'Anonymous' }}</span>
+                {% if block.settings.avatar != blank %}
+                  <img class="review-card__avatar"
+                       src="{{ block.settings.avatar | image_url: width: 80 }}"
+                       alt="{{ block.settings.reviewer | escape }}">
+                {% endif %}
+              </div>
+            </div>
 
-      <!-- Card 3（同上结构） -->
-      <article class="review-card">
-        <div class="review-card__header">
-          <svg class="review-card__stars" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z"/>
-            <path d="M29.825 21L31.45 13.975L26 9.25L33.2 8.625L36 2L38.8 8.625L46 9.25L40.55 13.975L42.175 21L36 17.275L29.825 21Z"/>
-            <path d="M53.825 21L55.45 13.975L50 9.25L57.2 8.625L60 2L62.8 8.625L70 9.25L64.55 13.975L66.175 21L60 17.275L53.825 21Z"/>
-            <path d="M77.825 21L79.45 13.975L74 9.25L81.2 8.625L84 2L86.8 8.625L94 9.25L88.55 13.975L90.175 21L84 17.275L77.825 21Z"/>
-            <path d="M101.825 21L103.45 13.975L98 9.25L105.2 8.625L108 2L110.8 8.625L118 9.25L112.55 13.975L114.175 21L108 17.275L101.825 21Z"/>
-          </svg>
-          <div class="review-card__user">
-            <span class="review-card__name">Rramski, KKF Member</span>
-            <img class="review-card__avatar" src="https://mockimg.co/80" alt="User avatar">
-          </div>
-        </div>
-        <p class="review-card__content">Sharpened dozens of knives in steels like MagnaCut & Apex Ultra. Consistently achieves sub-100 BESS edges.</p>
-        <div class="review-card__product">
-          <img class="review-card__product-img" src="https://mockimg.co/100" alt="product">
-          <div class="review-card__product-info">
-            <p class="review-card__product-title">Knife Sharpener Pro</p>
-            <span class="review-card__product-price">$199 <del>$299</del></span>
-          </div>
-        </div>
-      </article>
+            {% if block.settings.content != blank %}
+              <p class="review-card__content">{{ block.settings.content }}</p>
+            {% endif %}
 
+            {% assign p = block.settings.product %}
+            {% if p != blank %}
+              {% assign v = p.selected_or_first_available_variant %}
+              {% assign price = v.price %}
+              {% assign compare = v.compare_at_price %}
+
+              <div class="review-card__product">
+                {% if v.image %}
+                  <a href="{{ p.url }}"><img class="review-card__product-img" src="{{ v.image | image_url: width: 240 }}" alt="{{ p.title | escape }}"></a>
+                {% elsif p.featured_image %}
+                  <a href="{{ p.url }}"><img class="review-card__product-img" src="{{ p.featured_image | image_url: width: 240 }}" alt="{{ p.title | escape }}"></a>
+                {% endif %}
+
+                <div class="review-card__product-info">
+                  <p class="review-card__product-title">
+                    <a href="{{ p.url }}">{{ p.title }}</a>
+                  </p>
+
+                  <span class="review-card__product-price">
+                    {{ price | money }}
+                    {% if compare and compare > price %}
+                      <del>{{ compare | money }}</del>
+                      {% comment %} {% assign off_pct = 100 | minus: (price | times:100 | divided_by: compare | round) %}
+                      <span class="review-card__product-badge">-{{ off_pct }}%</span> {% endcomment %}
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+          </article>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Reviews cards",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Section title", "default": "Trusted by 1,000+ Knife Owners" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review card",
+      "settings": [
+        { "type": "checkbox", "id": "show_stars", "label": "Show stars", "default": true },
+        { "type": "range", "id": "rating", "label": "Rating (1–5)", "min": 1, "max": 5, "step": 1, "default": 5 },
+
+        { "type": "image_picker", "id": "avatar", "label": "Reviewer avatar" },
+        { "type": "text", "id": "reviewer", "label": "Reviewer name", "default": "KKF Member" },
+        { "type": "textarea", "id": "content", "label": "Review content" },
+
+        { "type": "product", "id": "product", "label": "Linked product" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "Reviews cards" }]
+}
+{% endschema %}
 <!-- ===== Reviews Section End ===== -->
