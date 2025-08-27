@@ -30,41 +30,73 @@
 
 <section class="best-seller">
   <div class="container">
-    <h2 class="best-seller__title">Best Seller <span class="best-seller__bg"></span></h2>
+    {% if section.settings.title != blank %}
+      <h2 class="best-seller__title">
+        {{ section.settings.title }}
+        <span class="best-seller__bg"></span>
+      </h2>
+    {% endif %}
 
-    <article class="wd-bs-item">
-      <div class="wd-bs-item__content">
-        <h3 class="wd-bs-item__title">Ultra-Saving RO System</h3>
-        <p class="wd-bs-item__desc">Instant pure water with lower wastewater ratio. Compact design fits modern kitchens.</p>
-        <p class="wd-bs-item__desc">Instant pure water with lower wastewater ratio. Compact design fits modern kitchens.</p>
-        <a class="wd-index-link-btn" href="#">Shop Now</a>
-      </div>
-      <figure class="wd-bs-item__media">
-        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600" alt="Ultra-Saving RO System">
-      </figure>
-    </article>
+    {% for block in section.blocks %}
+      <article class="wd-bs-item {% if block.settings.reverse %}wd-bs-item--reverse{% endif %}">
+        <div class="wd-bs-item__content">
+          {% if block.settings.item_title != blank %}
+            <h3 class="wd-bs-item__title">{{ block.settings.item_title }}</h3>
+          {% endif %}
 
-    <article class="wd-bs-item wd-bs-item--reverse">
-      <div class="wd-bs-item__content">
-        <h3 class="wd-bs-item__title">Dual-Flow RO System</h3>
-        <p class="wd-bs-item__desc">Switch between pure & alkaline RO water as needed, with intuitive smart faucet.</p>
-        <a class="wd-index-link-btn" href="#">Learn More</a>
-      </div>
-      <figure class="wd-bs-item__media">
-        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600" alt="Dual-Flow RO System">
-      </figure>
-    </article>
+         
+              <p class="wd-bs-item__desc">{{ block.settings.desc1 }}</p>
+              <p class="wd-bs-item__desc">{{ block.settings.desc2}}</p>
+              <p class="wd-bs-item__desc">{{ block.settings.desc3 }}</p>
+         
 
-    <article class="wd-bs-item">
-      <div class="wd-bs-item__content">
-        <h3 class="wd-bs-item__title">Mineral RO Dispenser</h3>
-        <p class="wd-bs-item__desc">Mineral-rich RO water on demand. Sleek, bottleless design with quick-change filters.</p>
-        <a class="wd-index-link-btn" href="#">Buy Now</a>
-      </div>
-      <figure class="wd-bs-item__media">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600" alt="Mineral RO Dispenser">
-      </figure>
-    </article>
+          {% if block.settings.btn_label != blank and block.settings.btn_link != blank %}
+            <a class="wd-index-link-btn" href="{{ block.settings.btn_link }}">
+              {{ block.settings.btn_label }}
+            </a>
+          {% endif %}
+        </div>
+
+        <figure class="wd-bs-item__media">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | image_url: width: 1600 }}" alt="{{ block.settings.alt | escape }}">
+          {% endif %}
+        </figure>
+      </article>
+    {% endfor %}
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Best Seller",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Section title", "default": "Best Seller" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Best Seller Item",
+      "settings": [
+        { "type": "checkbox", "id": "reverse", "label": "Image on left (reverse layout)", "default": false },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Image Alt text" },
+        { "type": "text", "id": "item_title", "label": "Item title" },
+
+        { "type": "textarea", "id": "desc1", "label": "Description 1" },
+        { "type": "textarea", "id": "desc2", "label": "Description 2" },
+        { "type": "textarea", "id": "desc3", "label": "Description 3" },
+
+        { "type": "text", "id": "btn_label", "label": "Button label" },
+        { "type": "url", "id": "btn_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    { "name": "Best Seller" }
+  ]
+}
+{% endschema %}
+
 <!-- ===== Best Seller Section End ===== -->
