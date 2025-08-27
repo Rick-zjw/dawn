@@ -1,0 +1,105 @@
+{% comment %} Splide Banner Section {% endcomment %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<style>
+  :root { --container-w:1280px; --pad-x:48px; }
+  .wd-index-splide, .wd-index-splide .splide__track, .wd-index-splide .splide__list, .wd-index-splide .splide__slide { height: calc(100vh - 68px); }
+  .wd-index-banner-slide { position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .wd-index-banner-slide img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+  .wd-index-splide .splide__arrow{ width:44px; height:44px; border-radius:999px; background:rgba(0,0,0,.35); }
+  .wd-index-splide .splide__arrow svg{ fill:#fff; width:18px; height:18px; }
+  .wd-index-splide .splide__pagination{ bottom:24px; gap:0; }
+  .wd-index-splide .splide__pagination__page{ width:40px; height:8px; border-radius:0; background:#777; opacity:1; box-shadow:0 3px 10px rgba(0,0,0,.15); margin:0; }
+  .wd-index-splide .splide__pagination__page.is-active{ background:#fff; transform:none; }
+  @media (max-width:640px){ .wd-index-splide .splide__pagination__page{ width:28px; } .wd-index-splide .splide__pagination__page.is-active{ width:40px; } }
+  .wd-index-banner-caption-box{ position:absolute; inset:0; }
+  .wd-index-banner-caption{ display:flex; flex-direction:column; justify-content:center; gap:24px; height:100%; max-width:var(--container-w); padding:0 var(--pad-x); margin:0 auto; }
+  .wd-index-banner-caption span, .wd-index-banner-caption h2, .wd-index-banner-caption p { font-style:normal; line-height:normal; max-width:500px; }
+  .wd-index-banner-caption span{ color:#DDD; font-size:20px; font-weight:600; }
+  .wd-index-banner-caption h2{ color:var(--color-grey-0, #FFF); font-size:48px; font-weight:600; }
+  .wd-index-banner-caption h2::first-letter{ color:#FBCB05; }
+  .wd-index-banner-caption p{ color:#DDD; font-size:16px; font-weight:400; line-height:130%; }
+  .wd-index-link-btn{ display:flex; height:56px; padding:16px; justify-content:center; align-items:center; background:#FBCB05; max-width:170px; color:#000; font-size:16px; gap:8px; font-weight:500; line-height:100%; letter-spacing:.5px; text-decoration:none; }
+</style>
+
+<section class="wd-index-splide splide" aria-label="Full Screen Banner">
+  <div class="splide__track">
+    <ul class="splide__list">
+      {% for block in section.blocks %}
+        <li class="splide__slide">
+          <div class="wd-index-banner-slide">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1920 }}"
+                alt="{{ block.settings.alt | escape }}"
+                loading="{{ forloop.first | default: false | ternary: 'eager', 'lazy' }}"
+                {% if forloop.first %}fetchpriority="high"{% endif %}
+              >
+            {% endif %}
+            {% if block.settings.show_caption %}
+            <div class="wd-index-banner-caption-box">
+              <div class="wd-index-banner-caption">
+                {% if block.settings.eyebrow != blank %}<span>{{ block.settings.eyebrow }}</span>{% endif %}
+                {% if block.settings.title != blank %}<h2>{{ block.settings.title }}</h2>{% endif %}
+                {% if block.settings.desc1 != blank %}<p>{{ block.settings.desc1 }}</p>{% endif %}
+                {% if block.settings.desc2 != blank %}<p>{{ block.settings.desc2 }}</p>{% endif %}
+                {% if block.settings.btn_label != blank and block.settings.btn_link != blank %}
+                  <a class="wd-index-link-btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var el = document.querySelector('#shopify-section-{{ section.id }} .wd-index-splide');
+    if (!el) return;
+    var slideCount = el.querySelectorAll('.splide__slide').length;
+    new Splide(el, {
+      type: slideCount > 1 ? 'loop' : 'slide',
+      perPage: 1,
+      arrows: slideCount > 1,
+      pagination: slideCount > 1,
+      autoplay: false,
+      interval: 5000,
+      pauseOnHover: true,
+      pauseOnFocus: false,
+      speed: 700,
+      rewind: true,
+      drag: slideCount > 1,
+      keyboard: slideCount > 1 ? 'global' : false,
+    }).mount();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Splide banner",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Alt text" },
+        { "type": "checkbox", "id": "show_caption", "label": "Show caption", "default": true },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Razor-Sharp in 3 Minutes!" },
+        { "type": "text", "id": "desc1", "label": "Description 1" },
+        { "type": "text", "id": "desc2", "label": "Description 2" },
+        { "type": "text", "id": "btn_label", "label": "Button label", "default": "Buy Now" },
+        { "type": "url", "id": "btn_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Splide banner" }]
+}
+{% endschema %}
