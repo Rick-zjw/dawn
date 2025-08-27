@@ -224,7 +224,56 @@
     },
     "index-best_seller": {
       "type": "index-best-seller",
-      "settings": {}
+      "blocks": {
+        "item_C9za3j": {
+          "type": "item",
+          "settings": {
+            "reverse": false,
+            "image": "shopify://shop_images/two-people-surfing-in-blue-choppy-water.jpg",
+            "alt": "Test",
+            "item_title": "title1",
+            "desc1": "Description1",
+            "desc2": "Description2",
+            "desc3": "",
+            "btn_label": "buy now",
+            "btn_link": "shopify://pages/3d"
+          }
+        },
+        "item_TRBxRn": {
+          "type": "item",
+          "settings": {
+            "reverse": false,
+            "alt": "",
+            "item_title": "",
+            "desc1": "",
+            "desc2": "",
+            "desc3": "",
+            "btn_label": "",
+            "btn_link": ""
+          }
+        },
+        "item_bT8MHD": {
+          "type": "item",
+          "settings": {
+            "reverse": false,
+            "alt": "",
+            "item_title": "",
+            "desc1": "",
+            "desc2": "",
+            "desc3": "",
+            "btn_label": "",
+            "btn_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_C9za3j",
+        "item_TRBxRn",
+        "item_bT8MHD"
+      ],
+      "settings": {
+        "title": "Best Seller"
+      }
     },
     "index-reviews_cards": {
       "type": "index-reviews-cards",
