@@ -1,0 +1,70 @@
+<!-- ===== Best Seller Section Start ===== -->
+<style>
+  :root { --container-w:1280px; --pad-x:48px; }
+
+  .best-seller{ padding:80px 0; color:#FFF; background:#222; }
+  .best-seller .container{ max-width:var(--container-w); margin-inline:auto; padding-inline:var(--pad-x); }
+
+  .best-seller__title{
+    font-size:40px; font-weight:600; line-height:1; margin:0 0 32px; position:relative; width:fit-content;
+  }
+  .best-seller__bg{
+    position:absolute; left:0; bottom:-8px; width:200px; height:24px;
+    background:linear-gradient(90deg,#FBCB05 0%, rgba(251,203,5,0) 100%);
+  }
+
+  .wd-bs-item{ display:flex; align-items:center; gap:48px; padding:0; flex-direction:row; }
+  .wd-bs-item--reverse{ flex-direction:row-reverse; }
+  .wd-bs-item__content, .wd-bs-item__media{ flex:1 1 0; min-width:0; }
+
+  .wd-bs-item__title{ font-size:32px; font-weight:600; line-height:1; margin:0 0 16px; }
+  .wd-bs-item__desc{ color:#DDD; font-size:20px; font-weight:400; line-height:140%; margin:0 0 12px; }
+  .wd-bs-item__content .wd-index-link-btn{ margin-top:32px; }
+
+  .wd-bs-item__media img{ width:100%; height:auto; display:block; aspect-ratio:3/2; object-fit:cover; }
+
+  @media (max-width:768px){
+    .wd-bs-item, .wd-bs-item--reverse{ flex-direction:column; gap:24px; }
+  }
+</style>
+
+<section class="best-seller">
+  <div class="container">
+    <h2 class="best-seller__title">Best Seller <span class="best-seller__bg"></span></h2>
+
+    <article class="wd-bs-item">
+      <div class="wd-bs-item__content">
+        <h3 class="wd-bs-item__title">Ultra-Saving RO System</h3>
+        <p class="wd-bs-item__desc">Instant pure water with lower wastewater ratio. Compact design fits modern kitchens.</p>
+        <p class="wd-bs-item__desc">Instant pure water with lower wastewater ratio. Compact design fits modern kitchens.</p>
+        <a class="wd-index-link-btn" href="#">Shop Now</a>
+      </div>
+      <figure class="wd-bs-item__media">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600" alt="Ultra-Saving RO System">
+      </figure>
+    </article>
+
+    <article class="wd-bs-item wd-bs-item--reverse">
+      <div class="wd-bs-item__content">
+        <h3 class="wd-bs-item__title">Dual-Flow RO System</h3>
+        <p class="wd-bs-item__desc">Switch between pure & alkaline RO water as needed, with intuitive smart faucet.</p>
+        <a class="wd-index-link-btn" href="#">Learn More</a>
+      </div>
+      <figure class="wd-bs-item__media">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600" alt="Dual-Flow RO System">
+      </figure>
+    </article>
+
+    <article class="wd-bs-item">
+      <div class="wd-bs-item__content">
+        <h3 class="wd-bs-item__title">Mineral RO Dispenser</h3>
+        <p class="wd-bs-item__desc">Mineral-rich RO water on demand. Sleek, bottleless design with quick-change filters.</p>
+        <a class="wd-index-link-btn" href="#">Buy Now</a>
+      </div>
+      <figure class="wd-bs-item__media">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600" alt="Mineral RO Dispenser">
+      </figure>
+    </article>
+  </div>
+</section>
+<!-- ===== Best Seller Section End ===== -->
