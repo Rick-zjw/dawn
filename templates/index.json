@@ -223,10 +223,25 @@
             "btn_label": "Button label",
             "btn_link": "shopify://pages/cut-test"
           }
+        },
+        "item_YyQY6L": {
+          "type": "item",
+          "settings": {
+            "reverse": true,
+            "image": "shopify://shop_images/9022a705161ff42b7879d88f1fd6d0e8.png",
+            "alt": "Image Alt text",
+            "item_title": "Item title",
+            "desc1": "Description 1",
+            "desc2": "",
+            "desc3": "",
+            "btn_label": "Button label",
+            "btn_link": "shopify://pages/contact"
+          }
         }
       },
       "block_order": [
-        "item_jjB7KH"
+        "item_jjB7KH",
+        "item_YyQY6L"
       ],
       "settings": {
         "title": "Best Seller"
