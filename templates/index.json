@@ -186,10 +186,48 @@
     },
     "index-splide_banner": {
       "type": "index-splide-banner",
+      "blocks": {
+        "slide_fnA4Kj": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/two-people-surfing-in-blue-choppy-water.jpg",
+            "alt": "alt",
+            "eyebrow": "Eyebrow",
+            "title": "Title",
+            "desc1": "Description 1",
+            "desc2": "Description 2",
+            "desc3": "Description 3",
+            "btn_label": "Button label",
+            "btn_link": "shopify://pages/3d"
+          }
+        }
+      },
+      "block_order": [
+        "slide_fnA4Kj"
+      ],
       "settings": {}
     },
     "index-best_seller": {
       "type": "index-best-seller",
+      "blocks": {
+        "item_jjB7KH": {
+          "type": "item",
+          "settings": {
+            "reverse": false,
+            "image": "shopify://shop_images/grey-t-shirt.jpg",
+            "alt": "Image Alt text",
+            "item_title": "Item title",
+            "desc1": "Description 1",
+            "desc2": "Description 2",
+            "desc3": "Description 3",
+            "btn_label": "Button label",
+            "btn_link": "shopify://pages/cut-test"
+          }
+        }
+      },
+      "block_order": [
+        "item_jjB7KH"
+      ],
       "settings": {
         "title": "Best Seller"
       }
