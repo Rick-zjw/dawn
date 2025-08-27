@@ -1,56 +1,97 @@
-{% comment %} Splide Banner Section {% endcomment %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+<!-- ===== Banner Section Start ===== -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
+
 <style>
   :root { --container-w:1280px; --pad-x:48px; }
-  .wd-index-splide, .wd-index-splide .splide__track, .wd-index-splide .splide__list, .wd-index-splide .splide__slide { height: calc(100vh - 68px); }
+
+  .wd-index-splide,
+  .wd-index-splide .splide__track,
+  .wd-index-splide .splide__list,
+  .wd-index-splide .splide__slide { height: calc(100vh - 68px); }
+
   .wd-index-banner-slide { position: relative; width: 100%; height: 100%; overflow: hidden; }
   .wd-index-banner-slide img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+
+  /* 箭头 */
   .wd-index-splide .splide__arrow{ width:44px; height:44px; border-radius:999px; background:rgba(0,0,0,.35); }
   .wd-index-splide .splide__arrow svg{ fill:#fff; width:18px; height:18px; }
+
+  /* 分页器改成长条 */
   .wd-index-splide .splide__pagination{ bottom:24px; gap:0; }
   .wd-index-splide .splide__pagination__page{ width:40px; height:8px; border-radius:0; background:#777; opacity:1; box-shadow:0 3px 10px rgba(0,0,0,.15); margin:0; }
   .wd-index-splide .splide__pagination__page.is-active{ background:#fff; transform:none; }
-  @media (max-width:640px){ .wd-index-splide .splide__pagination__page{ width:28px; } .wd-index-splide .splide__pagination__page.is-active{ width:40px; } }
+  @media (max-width:640px){
+    .wd-index-splide .splide__pagination__page{ width:28px; }
+    .wd-index-splide .splide__pagination__page.is-active{ width:40px; }
+  }
+
+  /* 文案层 */
   .wd-index-banner-caption-box{ position:absolute; inset:0; }
-  .wd-index-banner-caption{ display:flex; flex-direction:column; justify-content:center; gap:24px; height:100%; max-width:var(--container-w); padding:0 var(--pad-x); margin:0 auto; }
-  .wd-index-banner-caption span, .wd-index-banner-caption h2, .wd-index-banner-caption p { font-style:normal; line-height:normal; max-width:500px; }
+  .wd-index-banner-caption{
+    display:flex; flex-direction:column; justify-content:center; gap:24px;
+    height:100%; max-width:var(--container-w); padding:0 var(--pad-x); margin:0 auto;
+  }
+  .wd-index-banner-caption span,
+  .wd-index-banner-caption h2,
+  .wd-index-banner-caption p { font-style:normal; line-height:normal; max-width:500px; }
+
   .wd-index-banner-caption span{ color:#DDD; font-size:20px; font-weight:600; }
   .wd-index-banner-caption h2{ color:var(--color-grey-0, #FFF); font-size:48px; font-weight:600; }
   .wd-index-banner-caption h2::first-letter{ color:#FBCB05; }
   .wd-index-banner-caption p{ color:#DDD; font-size:16px; font-weight:400; line-height:130%; }
-  .wd-index-link-btn{ display:flex; height:56px; padding:16px; justify-content:center; align-items:center; background:#FBCB05; max-width:170px; color:#000; font-size:16px; gap:8px; font-weight:500; line-height:100%; letter-spacing:.5px; text-decoration:none; }
+
+  .wd-index-link-btn{
+    display:flex; height:56px; padding:16px; justify-content:center; align-items:center;
+    background:#FBCB05; max-width:170px; color:#000; font-size:16px; gap:8px;
+    font-weight:500; line-height:100%; letter-spacing:.5px; text-decoration:none;
+  }
 </style>
 
 <section class="wd-index-splide splide" aria-label="Full Screen Banner">
   <div class="splide__track">
     <ul class="splide__list">
-      {% for block in section.blocks %}
-        <li class="splide__slide">
-          <div class="wd-index-banner-slide">
-            {% if block.settings.image != blank %}
-              <img
-                src="{{ block.settings.image | image_url: width: 1920 }}"
-                alt="{{ block.settings.alt | escape }}"
-                loading="{{ forloop.first | default: false | ternary: 'eager', 'lazy' }}"
-                {% if forloop.first %}fetchpriority="high"{% endif %}
-              >
-            {% endif %}
-            {% if block.settings.show_caption %}
-            <div class="wd-index-banner-caption-box">
-              <div class="wd-index-banner-caption">
-                {% if block.settings.eyebrow != blank %}<span>{{ block.settings.eyebrow }}</span>{% endif %}
-                {% if block.settings.title != blank %}<h2>{{ block.settings.title }}</h2>{% endif %}
-                {% if block.settings.desc1 != blank %}<p>{{ block.settings.desc1 }}</p>{% endif %}
-                {% if block.settings.desc2 != blank %}<p>{{ block.settings.desc2 }}</p>{% endif %}
-                {% if block.settings.btn_label != blank and block.settings.btn_link != blank %}
-                  <a class="wd-index-link-btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>
-                {% endif %}
-              </div>
+      <!-- Slide 1 -->
+      <li class="splide__slide">
+        <div class="wd-index-banner-slide">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920" alt="Banner 1" loading="eager" fetchpriority="high" />
+          <div class="wd-index-banner-caption-box">
+            <div class="wd-index-banner-caption">
+              <span>Next-Gen Guided Knife Sharpener</span>
+              <h2>Razor-Sharp in Just 3 Minutes!</h2>
+              <p>Sharpen 1,000 knives with precision.</p>
+              <p>4mm vitrified diamond stone, 1s flip clamp, quad U-bearing + linear rails, and pro-grade control.</p>
+              <a class="wd-index-link-btn" href="/">Buy Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.586 10.6569L11.636 6.70692c-.182-.189-.283-.441-.28-.703s.108-.513.293-.698.436-.29.698-.292.513.108.702.29l5.657 5.657c.093.093.167.203.217.324s.076.251.076.382-.026.262-.076.383-.124.22-.217.312l-5.657 5.657a1 1 0 0 1-1.4 0c-.094-.094-.168-.206-.218-.328s-.077-.252-.078-.385  .028-.264.08-.386.125-.21.22-.303l3.95-3.95H6a1 1 0 0 1 0-2h9.586Z" fill="black"/>
+                </svg>
+              </a>
             </div>
-            {% endif %}
           </div>
-        </li>
-      {% endfor %}
+        </div>
+      </li>
+
+      <!-- Slide 2 -->
+      <li class="splide__slide">
+        <div class="wd-index-banner-slide">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920" alt="Banner 2" loading="lazy" />
+          <div class="wd-index-banner-caption-box">
+            <div class="wd-index-banner-caption">
+              <span>Next-Gen Guided Knife Sharpener</span>
+              <h2>Razor-Sharp in Just 3 Minutes!</h2>
+              <p>Sharpen 1,000 knives with precision.</p>
+              <p>4mm vitrified diamond stone, 1s flip clamp, quad U-bearing + linear rails, and pro-grade control.</p>
+              <a class="wd-index-link-btn" href="/">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Slide 3（纯图） -->
+      <li class="splide__slide">
+        <div class="wd-index-banner-slide">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1920" alt="Banner 3" loading="lazy" />
+        </div>
+      </li>
     </ul>
   </div>
 </section>
@@ -58,9 +99,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var el = document.querySelector('#shopify-section-{{ section.id }} .wd-index-splide');
+    const el = document.querySelector('.wd-index-splide');
     if (!el) return;
-    var slideCount = el.querySelectorAll('.splide__slide').length;
+    const slideCount = el.querySelectorAll('.splide__slide').length;
     new Splide(el, {
       type: slideCount > 1 ? 'loop' : 'slide',
       perPage: 1,
@@ -77,29 +118,4 @@
     }).mount();
   });
 </script>
-
-{% schema %}
-{
-  "name": "Splide banner",
-  "settings": [],
-  "blocks": [
-    {
-      "type": "slide",
-      "name": "Slide",
-      "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "alt", "label": "Alt text" },
-        { "type": "checkbox", "id": "show_caption", "label": "Show caption", "default": true },
-        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Razor-Sharp in 3 Minutes!" },
-        { "type": "text", "id": "desc1", "label": "Description 1" },
-        { "type": "text", "id": "desc2", "label": "Description 2" },
-        { "type": "text", "id": "btn_label", "label": "Button label", "default": "Buy Now" },
-        { "type": "url", "id": "btn_link", "label": "Button link" }
-      ]
-    }
-  ],
-  "max_blocks": 6,
-  "presets": [{ "name": "Splide banner" }]
-}
-{% endschema %}
+<!-- ===== Banner Section End ===== -->
