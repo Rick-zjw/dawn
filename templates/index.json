@@ -194,6 +194,9 @@
             "alt": "132",
             "eyebrow": "Eyebrow",
             "title": "Title",
+            "desc1": "desc1",
+            "desc2": "desc2",
+            "desc3": "desc3",
             "btn_label": "buy now",
             "btn_link": "shopify://pages/about-us"
           }
