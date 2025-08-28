@@ -25,10 +25,6 @@
   .wd-index-splide .splide__pagination{ bottom:24px; gap:0; }
   .wd-index-splide .splide__pagination__page{ width:40px; height:8px; border-radius:0; background:#777; opacity:1; box-shadow:0 3px 10px rgba(0,0,0,.15); margin:0; }
   .wd-index-splide .splide__pagination__page.is-active{ background:#fff; transform:none; }
-  @media (max-width:640px){
-    .wd-index-splide .splide__pagination__page{ width:28px; }
-    .wd-index-splide .splide__pagination__page.is-active{ width:40px; }
-  }
 
   /* 文案层 */
   .wd-index-banner-caption-box{ position:absolute; inset:0; }
@@ -50,6 +46,10 @@
     background:#FBCB05; max-width:170px; color:#000; font-size:16px; gap:8px;
     font-weight:500; line-height:100%; letter-spacing:.5px; text-decoration:none;
   }
+    @media (max-width:1024px){
+    .wd-index-banner-caption{align-items: center;}
+  }
+
 </style>
 
 <section class="wd-index-splide splide" aria-label="Full Screen Banner">
