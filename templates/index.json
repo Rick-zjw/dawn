@@ -256,7 +256,7 @@
             "show_stars": true,
             "rating": 5,
             "reviewer": "KKF Member",
-            "content": "",
+            "content": "you can initialize the selector based on the current and default options. When a new selection is made, you should use JavaScript to append the URL parameter and refresh the page.",
             "product": "yellow-snowboard"
           }
         },
@@ -266,7 +266,7 @@
             "show_stars": true,
             "rating": 5,
             "reviewer": "KKF Member",
-            "content": "",
+            "content": "you can initialize the selector based on the current and default options. When a new selection is made, you should use JavaScript to append the URL parameter and refresh the page.",
             "product": "example-hat"
           }
         },
@@ -277,7 +277,7 @@
             "rating": 5,
             "avatar": "shopify://shop_images/rick.png",
             "reviewer": "KKF Member",
-            "content": "132",
+            "content": "you can initialize the selector based on the current and default options. When a new selection is made, you should use JavaScript to append the URL parameter and refresh the page.",
             "product": "black-snowboard"
           }
         }
