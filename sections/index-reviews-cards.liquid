@@ -26,7 +26,9 @@
   .review-card__product-title{ font-size:16px; font-weight:600; color:#222; }
   .review-card__product-price{ font-size:16px; font-weight:600; color:#036AFF; }
   .review-card__product-price del{ font-size:14px; font-weight:400; color:#999; margin-left:8px; }
-
+   @media (max-width:1024px){
+   .reviews__list{overflow-x:auto;}
+  }
   @media (max-width:768px){
     .review-card__product{ flex-direction:column; align-items:flex-start; }
     .review-card__product-img{ width:100%; max-width:240px; height:auto; }
