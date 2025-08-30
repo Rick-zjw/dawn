@@ -294,6 +294,10 @@
     "index_subscribe": {
       "type": "index-subscribe",
       "settings": {}
+    },
+     "product-list_choose": {
+      "type": "product-list-choose",
+      "settings": {}
     }
   },
   "order": [
@@ -306,6 +310,7 @@
     "index-splide_banner",
     "index-best_seller",
     "index-reviews_cards",
-    "index_subscribe"
+    "index_subscribe",
+    "product-list_choose"
   ]
 }
