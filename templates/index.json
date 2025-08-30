@@ -295,9 +295,40 @@
       "type": "index-subscribe",
       "settings": {}
     },
-     "product-list_choose": {
+    "product-list_choose": {
       "type": "product-list-choose",
-      "settings": {}
+      "blocks": {
+        "product_card_RqHnbk": {
+          "type": "product_card",
+          "settings": {
+            "product": "black-snowboard",
+            "extra_desc": "Custom description for this product."
+          }
+        },
+        "product_card_MxDGqE": {
+          "type": "product_card",
+          "settings": {
+            "product": "example-hat",
+            "extra_desc": "Custom description for this product."
+          }
+        },
+        "product_card_fD9NW8": {
+          "type": "product_card",
+          "settings": {
+            "product": "example-shirt",
+            "extra_desc": "Custom description for this product."
+          }
+        }
+      },
+      "block_order": [
+        "product_card_RqHnbk",
+        "product_card_MxDGqE",
+        "product_card_fD9NW8"
+      ],
+      "settings": {
+        "title": "Modular Expansion System",
+        "desc": "Upgrade your system with three modular kits to match different sharpening needs.\nThe Extended Rod Kit enables front-and-back sharpening for blades up to 330mm and is compatible with future bread knife stones.\nThe Stone Upgrade Kit refines edge micro-serrations and increases measurable sharpness — no angle adjustment needed when switching grits of equal thickness.\nThe Scissor Clamp Module supports straight-edged scissors; during sink usage, scissors can remain assembled, while desktop use is best with disassembly for better control."
+      }
     }
   },
   "order": [
