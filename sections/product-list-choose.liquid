@@ -1,0 +1,206 @@
+{% schema %}
+{
+  "name": "Modular Expansion System",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Modular Expansion System"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Section Description",
+      "default": "Upgrade your system with three modular kits to match different sharpening needs."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "textarea",
+          "id": "extra_desc",
+          "label": "Custom Description",
+          "default": "Custom description for this product."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Modular Expansion System",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .modular-section {
+            text-align: center;
+            padding: 80px 0;
+            background-color: #000;
+        }
+
+        .modular-title {
+            font-weight: 600;
+            font-size: 36px;
+            text-align: center;
+            font-style: normal;
+            text-transform: none;
+            background: linear-gradient(0deg, #70F0FB 0%, #168FEF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .modular-desc {
+            margin: 32px auto;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #FFF;
+        }
+
+        .products-box {
+            max-width: 1280px;
+            padding: 0 48px;
+            margin: 0 auto;
+        }
+
+        .modular-product-list {
+            display: flex;
+            gap: 24px;
+            overflow: hidden;
+            padding: 0 100px;
+        }
+
+        .modular-product-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .product-img {
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto 12px;
+            display: block;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #666;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .add-to-cart {
+            max-width: 100%;
+            padding: 10px 16px;
+            background: #FBCB05;
+            width: 100%;
+            color: #000;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #FCDC58;
+        }
+
+
+        @media (min-width: 768px) {
+            .products-box {
+                padding: 0 40px;
+            }
+
+            .modular-product-list {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                overflow: visible;
+                padding: 0;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .products-box {
+                padding: 0 24px;
+            }
+
+            .modular-product-list {
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+            }
+
+            .modular-product-card {
+                min-width: 220px;
+                scroll-snap-align: start;
+                flex: auto;
+                padding: 12px;
+                border-radius: 4px;
+            }
+        }
+    </style>
+<section class="modular-section">
+  <div class="products-box">
+    {% if section.settings.title != blank %}
+      <h3 class="modular-title">{{ section.settings.title }}</h3>
+    {% endif %}
+
+    {% if section.settings.desc != blank %}
+   <p class="modular-desc">{{ section.settings.desc | newline_to_br }}</p>
+
+    {% endif %}
+
+    <div class="modular-product-list">
+      {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product] %}
+        {% if product %}
+          <div class="modular-product-card">
+            <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" class="product-img">
+            
+            <p class="product-name">{{ product.title }}</p>
+            
+            {% if block.settings.extra_desc != blank %}
+              <span class="product-desc">{{ block.settings.extra_desc }}</span>
+            {% endif %}
+
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              <button type="submit" class="add-to-cart">Add to cart</button>
+            </form>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
